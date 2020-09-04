@@ -27,14 +27,14 @@ export default class Lexicon {
      *
      * @param lexicon New lexicon.
      */
-    static extend(lexicon: { [p: string]: { [p: string]: string } } = {}) {
+    static extend(lexicon: { [p: string]: { [p: string]: string } } = {}): void {
         this.lexicon = {...this.lexicon, ...lexicon};
     }
 
     /**
      * Returns the default language.
      */
-    static getLang() {
+    static getLang(): string {
         if (this.lang === null) {
             this.lang = document.querySelector('html').getAttribute('lang') ?? 'en';
         }
@@ -47,7 +47,7 @@ export default class Lexicon {
      *
      * @param lang Language abbreviation for example: en, ru, etc.
      */
-    static setLang(lang: string = 'en') {
+    static setLang(lang: string = 'en'): void {
         this.lang = lang;
     }
 
@@ -57,7 +57,7 @@ export default class Lexicon {
      * @param string Source string.
      * @param placeholders An object containing placeholders.
      */
-    static setPlaceholders(string: string, placeholders: { [p: string]: string } = {}) {
+    static setPlaceholders(string: string, placeholders: { [p: string]: string } = {}): string {
         for (let placeholder in placeholders) {
             string = string.replace(`{${placeholder}}`, placeholders[placeholder]);
         }
@@ -71,7 +71,7 @@ export default class Lexicon {
      * @param string
      * @param placeholders
      */
-    static get(string: string, placeholders: { [p: string]: string } = {}) {
+    static get(string: string, placeholders: { [p: string]: string } = {}): string {
         let lang = this.getLang();
 
         if (string in this.lexicon && lang in this.lexicon[string]) {
