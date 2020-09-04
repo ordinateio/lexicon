@@ -13,7 +13,7 @@ npm i https://github.com/callisto2410/modstrap-lexicon.git#v1.0.0
 ### Usage
 
 ```javascript
-import Lexicon from "@modstrap/lexicon";
+import Lexicon from "@modstrap/lexicon/src/lexicon";
 
 Lexicon.extend({
     'key': {
