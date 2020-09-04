@@ -9,7 +9,7 @@ Lexicon.extend({
 
 /* Language: en */
 let en = document.querySelector('.content .en');
-let en_lang = Lexicon.getLang();
+let en_lang = Lexicon.lang;
 let en_lorem = Lexicon.get('lorem');
 en.innerHTML = `
 <h1>Language: ${en_lang}</h1>
@@ -17,10 +17,10 @@ en.innerHTML = `
 
 
 /* Language: ru */
-Lexicon.setLang('ru');
+Lexicon.lang ='ru';
 
 let ru = document.querySelector('.content .ru');
-let ru_lang = Lexicon.getLang();
+let ru_lang = Lexicon.lang;
 let ru_lorem = Lexicon.get('lorem');
 ru.innerHTML = `
 <h1>Language: ${ru_lang}</h1>
