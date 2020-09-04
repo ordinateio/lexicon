@@ -1,9 +1,30 @@
 # modstrap-lexicon
 
+Manages translations of the user interface.
+
 ## Example
 
-```javascript
-import lexicon from "@modstrap/lexicon";
+### Installation
 
-lexicon.get(desired, placeholders);
+```json
+{
+    "dependencies": {
+      "@modstrap/lexicon": "https://github.com/callisto2410/modstrap-lexicon.git#v1.0.0"
+    }
+}
+```
+
+### Usage
+
+```javascript
+import Lexicon from "@modstrap/lexicon";
+
+Lexicon.extend({
+    'key': {
+         en: 'On the other hand ...',
+         ru: 'Не следует, однако...',
+    }
+});
+
+console.log(lexicon.get('key'));
 ```
