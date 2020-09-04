@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Lexicon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            background: #ffffff;
+        }
+
+        article {
+            color: #444444;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content {
+            width: 600px;
+            margin: auto;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+        }
+
+        .en,
+        .ru {
+            margin: 0 0 30px;
+        }
+
+        h1 {
+            font: 20px 'Arial';
+            margin: 0 0 10px;
+        }
+
+        p {
+            font: 14px/22px 'Arial';
+            margin: 0 0 30px;
+        }
+
+        p:nth-last-child(1) {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<article>
+    <div class="content">
+        <div class="en"></div>
+        <div class="ru"></div>
+        <div class="placeholders"></div>
+    </div>
+</article>
+<script async src="dist/bundle.js"></script>
+</body>
+</html>
