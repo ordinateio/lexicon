@@ -6,12 +6,8 @@ Manages translations of the user interface.
 
 ### Installation
 
-```json
-{
-    "dependencies": {
-      "@modstrap/lexicon": "https://github.com/callisto2410/modstrap-lexicon.git#v1.0.0"
-    }
-}
+```shell script
+npm i https://github.com/callisto2410/modstrap-lexicon.git#v1.0.0
 ```
 
 ### Usage
