@@ -67,11 +67,30 @@ export default class Lexicon {
      * Returns a localized string.
      *
      * @param key Key to access the dictionary.
+     * @param lang Required language.
+     */
+    static get(key: string, lang?: string): string;
+
+    /**
+     * Returns a localized string.
+     *
+     * @param key Key to access the dictionary.
      * @param placeholders An object containing placeholders.
      */
-    static get(key: string, placeholders: { [p: string]: string } = {}): string {
-        if (key in this._lexicon && this._lang in this._lexicon[key]) {
-            key = this.setPlaceholders(this._lexicon[key][this._lang], placeholders);
+    static get(key: string, placeholders?: { [p: string]: string }): string;
+
+    /**
+     * Returns a localized string.
+     *
+     * @param key Key to access the dictionary.
+     * @param options Required language or object containing placeholders.
+     */
+    static get(key: string, options?: string | { [p: string]: string }): string {
+        let lang = (typeof options === 'string') ? options : this._lang;
+        let placeholders = (typeof options === 'object') ? options : {};
+
+        if (key in this._lexicon && lang in this._lexicon[key]) {
+            key = this.setPlaceholders(this._lexicon[key][lang], placeholders);
         }
 
         return key;
