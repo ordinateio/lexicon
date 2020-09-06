@@ -2,7 +2,7 @@
   "name": "@modstrap/lexicon",
   "version": "1.0.6",
   "description": "Manages the localization of the UI.",
-  "main": "",
+  "main": "src/lexicon.ts",
   "author": "Callisto (https://github.com/callisto2410)",
   "license": "MIT",
   "homepage": "https://github.com/callisto2410/modstrap-lexicon.git",
