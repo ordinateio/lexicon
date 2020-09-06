@@ -67,9 +67,16 @@ export default class Lexicon {
      * Returns a localized string.
      *
      * @param key Key to access the dictionary.
+     */
+    static get(key: string): string;
+
+    /**
+     * Returns a localized string.
+     *
+     * @param key Key to access the dictionary.
      * @param lang Required language.
      */
-    static get(key: string, lang?: string): string;
+    static get(key: string, lang: string): string;
 
     /**
      * Returns a localized string.
@@ -77,7 +84,7 @@ export default class Lexicon {
      * @param key Key to access the dictionary.
      * @param placeholders An object containing placeholders.
      */
-    static get(key: string, placeholders?: { [p: string]: string }): string;
+    static get(key: string, placeholders: { [p: string]: string }): string;
 
     /**
      * Returns a localized string.
