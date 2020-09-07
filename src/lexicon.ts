@@ -1,3 +1,13 @@
+interface Dictionary {
+    [key: string]: {
+        [lang: string]: string;
+    };
+}
+
+interface Placeholders {
+    [key: string]: string;
+}
+
 /**
  * Manages translations of the user interface.
  *
@@ -5,13 +15,13 @@
  * @see Lexicon.setPlaceholders
  * @see Lexicon.get
  */
-export default class Lexicon {
+class Lexicon {
     /**
-     * Default lexicon.
+     * Default dictionary.
      *
      * @private
      */
-    private static _lexicon: { [p: string]: { [p: string]: string } } = {};
+    private static _dictionary: Dictionary = {};
 
     /**
      * Used language.
@@ -41,12 +51,12 @@ export default class Lexicon {
     }
 
     /**
-     * Extends the default lexicon with new phrases.
+     * Extends the default dictionary with new phrases.
      *
-     * @param lexicon New lexicon.
+     * @param dictionary New dictionary.
      */
-    static extend(lexicon: { [p: string]: { [p: string]: string } }): void {
-        this._lexicon = {...this._lexicon, ...lexicon};
+    static extend(dictionary: Dictionary): void {
+        this._dictionary = {...this._dictionary, ...dictionary};
     }
 
     /**
@@ -55,9 +65,10 @@ export default class Lexicon {
      * @param string Source string.
      * @param placeholders An object containing placeholders.
      */
-    static setPlaceholders(string: string, placeholders: { [p: string]: string } = {}): string {
-        for (let placeholder in placeholders) {
-            string = string.replace(`{${placeholder}}`, placeholders[placeholder]);
+    static setPlaceholders(string: string, placeholders: Placeholders): string {
+        const keys = Object.keys(placeholders);
+        for (const key of keys) {
+            string = string.replace(`{${key}}`, placeholders[key]);
         }
 
         return string;
@@ -84,7 +95,7 @@ export default class Lexicon {
      * @param key Key to access the dictionary.
      * @param placeholders An object containing placeholders.
      */
-    static get(key: string, placeholders: { [p: string]: string }): string;
+    static get(key: string, placeholders: Placeholders): string;
 
     /**
      * Returns a localized string.
@@ -92,14 +103,19 @@ export default class Lexicon {
      * @param key Key to access the dictionary.
      * @param options Required language or object containing placeholders.
      */
-    static get(key: string, options?: string | { [p: string]: string }): string {
-        let lang = (typeof options === 'string') ? options : this._lang;
-        let placeholders = (typeof options === 'object') ? options : {};
+    static get(key: string, options?: string | Placeholders): string {
+        const lang = (typeof options === 'string') ? options : this._lang;
+        const placeholders = (typeof options === 'object') ? options : {};
 
-        if (key in this._lexicon && lang in this._lexicon[key]) {
-            key = this.setPlaceholders(this._lexicon[key][lang], placeholders);
+        if (key in this._dictionary && lang in this._dictionary[key]) {
+            key = this.setPlaceholders(this._dictionary[key][lang], placeholders);
         }
 
         return key;
     }
+}
+
+export default Lexicon;
+export {
+    Lexicon, Dictionary, Placeholders
 }
