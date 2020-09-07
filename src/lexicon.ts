@@ -117,5 +117,7 @@ class Lexicon {
 
 export default Lexicon;
 export {
-    Lexicon, Dictionary, Placeholders
+    Lexicon,
+    Dictionary,
+    Placeholders
 }
