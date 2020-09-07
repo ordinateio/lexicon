@@ -11,9 +11,9 @@ interface Placeholders {
 /**
  * Manages translations of the user interface.
  *
- * @see Lexicon.extend
- * @see Lexicon.setPlaceholders
- * @see Lexicon.get
+ * @see extend
+ * @see setPlaceholders
+ * @see get
  */
 class Lexicon {
     /**
@@ -119,5 +119,5 @@ export default Lexicon;
 export {
     Lexicon,
     Dictionary,
-    Placeholders
+    Placeholders,
 }
