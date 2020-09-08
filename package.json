@@ -14,10 +14,10 @@
     "url": "git+https://github.com/callisto2410/modstrap-lexicon.git"
   },
   "scripts": {
-    "build:development": "webpack --mode development --devtool 'eval' --config webpack.config.js",
-    "build:watch:development": "webpack --watch --mode development --devtool 'eval' --config webpack.config.js",
-    "build:production": "webpack --mode production --config webpack.config.js",
-    "build:watch:production": "webpack --watch --mode production --config webpack.config.js"
+    "build:development": "webpack --mode development --devtool 'source-map' --config webpack.config.js",
+    "build:watch:development": "webpack --watch --mode development --devtool 'source-map' --config webpack.config.js",
+    "build:production": "webpack --mode production --devtool 'source-map' --config webpack.config.js",
+    "build:watch:production": "webpack --watch --mode production --devtool 'source-map' --config webpack.config.js"
   },
   "dependencies": {},
   "devDependencies": {
