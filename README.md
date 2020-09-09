@@ -7,7 +7,7 @@ Manages translations of the user interface.
 ### Installation
 
 ```shell script
-npm i https://github.com/callisto2410/modstrap-lexicon.git#v1.0.9
+npm i https://github.com/callisto2410/modstrap-lexicon.git#v1.0.10
 ```
 
 ### Usage
