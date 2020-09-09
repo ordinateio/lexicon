@@ -104,8 +104,8 @@ class Lexicon {
      * @param options Required language or object containing placeholders.
      */
     static get(key: string, options?: string | Placeholders): string {
-        const lang = (typeof options === 'string') ? options : this._lang;
-        const placeholders = (typeof options === 'object') ? options : {};
+        const lang: string = (typeof options === 'string') ? options : this._lang;
+        const placeholders: Placeholders = (typeof options === 'object') ? options : {};
 
         if (key in this._dictionary && lang in this._dictionary[key]) {
             key = this.setPlaceholders(this._dictionary[key][lang], placeholders);
