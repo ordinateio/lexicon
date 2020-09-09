@@ -101,11 +101,11 @@ class Lexicon {
      * Returns a localized string.
      *
      * @param key Key to access the dictionary.
-     * @param options Required language or object containing placeholders.
+     * @param mixed Required language or object containing placeholders.
      */
-    static get(key: string, options?: string | Placeholders): string {
-        const lang: string = (typeof options === 'string') ? options : this._lang;
-        const placeholders: Placeholders = (typeof options === 'object') ? options : {};
+    static get(key: string, mixed?: string | Placeholders): string {
+        const lang: string = (typeof mixed === 'string') ? mixed : this._lang;
+        const placeholders: Placeholders = (typeof mixed === 'object') ? mixed : {};
 
         if (key in this._dictionary && lang in this._dictionary[key]) {
             key = this.setPlaceholders(this._dictionary[key][lang], placeholders);
