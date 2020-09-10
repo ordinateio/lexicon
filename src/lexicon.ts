@@ -104,7 +104,7 @@ class Lexicon {
      * @param mixed Required language or object containing placeholders.
      */
     static get(key: string, mixed?: string | Placeholders): string {
-        const lang: string = (typeof mixed === 'string') ? mixed : this._lang;
+        const lang: string = (typeof mixed === 'string') ? mixed : this.lang;
         const placeholders: Placeholders = (typeof mixed === 'object') ? mixed : {};
 
         if (key in this._dictionary && lang in this._dictionary[key]) {
