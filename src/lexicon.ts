@@ -1,4 +1,4 @@
-interface Dictionary {
+interface Translations {
     [key: string]: {
         [lang: string]: string;
     };
@@ -17,11 +17,11 @@ interface Placeholders {
  */
 class Lexicon {
     /**
-     * Default dictionary.
+     * Default translations.
      *
      * @private
      */
-    private static _dictionary: Dictionary = {};
+    private static _translations: Translations = {};
 
     /**
      * Used language.
@@ -51,12 +51,12 @@ class Lexicon {
     }
 
     /**
-     * Extends the default dictionary with new phrases.
+     * Extends the default translations with new phrases.
      *
-     * @param dictionary New dictionary.
+     * @param translations New translations.
      */
-    static extend(dictionary: Dictionary): void {
-        this._dictionary = {...this._dictionary, ...dictionary};
+    static extend(translations: Translations): void {
+        this._translations = {...this._translations, ...translations};
     }
 
     /**
@@ -77,14 +77,14 @@ class Lexicon {
     /**
      * Returns a localized string.
      *
-     * @param key Key to access the dictionary.
+     * @param key Key to access translations.
      */
     static get(key: string): string;
 
     /**
      * Returns a localized string.
      *
-     * @param key Key to access the dictionary.
+     * @param key Key to access translations.
      * @param lang Required language.
      */
     static get(key: string, lang: string): string;
@@ -92,7 +92,7 @@ class Lexicon {
     /**
      * Returns a localized string.
      *
-     * @param key Key to access the dictionary.
+     * @param key Key to access translations.
      * @param placeholders An object containing placeholders.
      */
     static get(key: string, placeholders: Placeholders): string;
@@ -100,15 +100,15 @@ class Lexicon {
     /**
      * Returns a localized string.
      *
-     * @param key Key to access the dictionary.
+     * @param key Key to access translations.
      * @param mixed Required language or object containing placeholders.
      */
     static get(key: string, mixed?: string | Placeholders): string {
         const lang: string = (typeof mixed === 'string') ? mixed : this.lang;
         const placeholders: Placeholders = (typeof mixed === 'object') ? mixed : {};
 
-        if (key in this._dictionary && lang in this._dictionary[key]) {
-            key = this.setPlaceholders(this._dictionary[key][lang], placeholders);
+        if (key in this._translations && lang in this._translations[key]) {
+            key = this.setPlaceholders(this._translations[key][lang], placeholders);
         }
 
         return key;
@@ -118,6 +118,6 @@ class Lexicon {
 export default Lexicon;
 export {
     Lexicon,
-    Dictionary,
+    Translations,
     Placeholders,
 }
