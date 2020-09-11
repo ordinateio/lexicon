@@ -21,7 +21,7 @@ class Lexicon {
      *
      * @private
      */
-    private static _translations: Translations = {};
+    private static _translations: Translations;
 
     /**
      * Used language.
@@ -36,7 +36,7 @@ class Lexicon {
     static get lang(): string {
         const html = document.querySelector('html');
 
-        if (this._lang === null) {
+        if (this._lang === undefined) {
             this._lang = (html !== null) ? html.getAttribute('lang') ?? 'en' : 'en';
         }
 
@@ -69,6 +69,7 @@ class Lexicon {
      */
     static setPlaceholders(string: string, placeholders: Placeholders): string {
         const keys = Object.keys(placeholders);
+
         for (const key of keys) {
             string = string.replace(`{${key}}`, placeholders[key]);
         }
@@ -106,8 +107,10 @@ class Lexicon {
      * @param mixed Required language or object containing placeholders.
      */
     static get(key: string, mixed?: string | Placeholders): string {
-        const lang: string = (typeof mixed === 'string') ? mixed : this.lang;
-        const placeholders: Placeholders = (typeof mixed === 'object') ? mixed : {};
+        if (!this._translations) throw new Error("Translations not specified.");
+
+        const lang = (typeof mixed === 'string') ? mixed : this.lang;
+        const placeholders = (typeof mixed === 'object') ? mixed : {};
 
         if (key in this._translations && lang in this._translations[key]) {
             key = this.setPlaceholders(this._translations[key][lang], placeholders);
