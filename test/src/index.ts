@@ -1,22 +1,22 @@
 import Lexicon, {Translations, Placeholders} from "../../src/lexicon";
 
 let en = document.querySelector('.content .en');
-if (!en) throw new Error('Element "en" is "undefined".');
+if (!en) throw new Error('Element ".en" is "undefined".');
 
 let ru = document.querySelector('.content .ru');
-if (!ru) throw new Error('Element "ru" is "undefined".');
+if (!ru) throw new Error('Element ".ru" is "undefined".');
 
 let get_en = document.querySelector('.content .get-en');
-if (!get_en) throw new Error('Element "get_en" is "undefined".');
+if (!get_en) throw new Error('Element ".get_en" is "undefined".');
 
 let get_ru = document.querySelector('.content .get-ru');
-if (!get_ru) throw new Error('Element "get_ru" is "undefined".');
+if (!get_ru) throw new Error('Element ".get_ru" is "undefined".');
 
 let placeholders_en = document.querySelector('.content .placeholders-en');
-if (!placeholders_en) throw new Error('Element "placeholders_en" is "undefined".');
+if (!placeholders_en) throw new Error('Element ".placeholders_en" is "undefined".');
 
 let placeholders_ru = document.querySelector('.content .placeholders-ru');
-if (!placeholders_ru) throw new Error('Element "placeholders_ru" is "undefined".');
+if (!placeholders_ru) throw new Error('Element ".placeholders_ru" is "undefined".');
 
 let placeholders_text: string;
 
