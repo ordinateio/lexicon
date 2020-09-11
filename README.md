@@ -2,15 +2,13 @@
 
 Manages translations of the user interface.
 
-## Example
-
-### Installation
+## Installation
 
 ```shell script
 npm i https://github.com/callisto2410/modstrap-lexicon.git#v1.0.0
 ```
 
-### Usage
+## Usage
 
 ```javascript
 import Lexicon from "@modstrap/lexicon";
