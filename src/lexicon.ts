@@ -28,7 +28,7 @@ class Lexicon {
      *
      * @private
      */
-    private static _lang: string = null;
+    private static _lang: string;
 
     /**
      * Default language.
