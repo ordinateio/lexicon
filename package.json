@@ -1,6 +1,6 @@
 {
   "name": "@modstrap/lexicon",
-  "version": "1.0.11",
+  "version": "1.0.0",
   "description": "Manages the localization of the UI.",
   "main": "src/lexicon.ts",
   "author": "Callisto (https://github.com/callisto2410)",
