@@ -107,7 +107,7 @@ class Lexicon {
      * @param mixed Required language or object containing placeholders.
      */
     static get(key: string, mixed?: string | Placeholders): string {
-        if (!this._translations) throw new Error('Translations not specified.');
+        if (!this._translations) throw new Error('Translations is not defined.');
 
         const lang = (typeof mixed === 'string') ? mixed : this.lang;
         const placeholders = (typeof mixed === 'object') ? mixed : {};
