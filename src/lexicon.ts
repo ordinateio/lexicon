@@ -34,10 +34,8 @@ class Lexicon {
      * Default language.
      */
     static get lang(): string {
-        const html = document.querySelector('html');
-
         if (this._lang === undefined) {
-            this._lang = (html !== null) ? html.getAttribute('lang') ?? 'en' : 'en';
+            this._lang = document.querySelector('html')?.getAttribute('lang') ?? 'en';
         }
 
         return this._lang;
