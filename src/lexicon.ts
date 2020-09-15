@@ -120,7 +120,6 @@ class Lexicon {
 
 export default Lexicon;
 export {
-    Lexicon,
     Translations,
     Placeholders,
 }
