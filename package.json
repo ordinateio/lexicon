@@ -14,8 +14,8 @@
     "url": "git+https://github.com/callisto2410/modstrap-lexicon.git"
   },
   "scripts": {
-    "build": "webpack --mode production --config webpack.config.js",
-    "build:watch": "webpack --watch --mode production --config webpack.config.js"
+    "build": "webpack --config webpack.config.js",
+    "build:watch": "webpack --watch --config webpack.config.js"
   },
   "dependencies": {},
   "devDependencies": {
