@@ -2,8 +2,8 @@
   "name": "@modstrap/lexicon",
   "version": "1.0.0",
   "description": "Manages the localization of the UI.",
-  "main": "src/lexicon.ts",
-  "type": "module",
+  "main": "dist/lexicon.js",
+  "typings": "dist/lexicon.d.ts",
   "author": "Callisto (https://github.com/callisto2410)",
   "license": "MIT",
   "homepage": "https://github.com/callisto2410/modstrap-lexicon",
@@ -15,8 +15,10 @@
     "url": "git+https://github.com/callisto2410/modstrap-lexicon.git"
   },
   "scripts": {
-    "build": "webpack --config webpack.config.cjs",
-    "build:watch": "webpack --watch --config webpack.config.cjs"
+    "build:test": "webpack --config webpack.config.js",
+    "build:test:watch": "webpack --watch --config webpack.config.js",
+    "build:dist": "tsc",
+    "build:all": "tsc && webpack --config webpack.config.js"
   },
   "dependencies": {},
   "devDependencies": {

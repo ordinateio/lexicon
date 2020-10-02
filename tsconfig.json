@@ -4,6 +4,12 @@
     "moduleResolution": "Node",
     "incremental": true,
     "target": "ES5",
-    "strict": true
-  }
+    "strict": true,
+    "removeComments": true,
+    "declaration": true,
+    "outDir": "dist/"
+  },
+  "files": [
+    "src/lexicon.ts"
+  ]
 }
