@@ -4,6 +4,6 @@ test
 
 tsconfig.json
 tsloader.json
-tsconfig.tsbuildinfo
 webpack.config.js
+*.tsbuildinfo
 *.tgz
