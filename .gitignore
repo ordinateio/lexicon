@@ -1,6 +1,6 @@
 .idea
-
-dist
 node_modules
+test/dist
 
 tsconfig.tsbuildinfo
+*.tgz
