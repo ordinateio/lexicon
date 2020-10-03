@@ -62,7 +62,7 @@ class Lexicon {
      * @param placeholders An object containing placeholders.
      */
     static setPlaceholders(string: string, placeholders: Placeholders): string {
-        const keys = Object.keys(placeholders);
+        const keys: string[] = Object.keys(placeholders);
 
         for (const key of keys) {
             string = string.replace(`{${key}}`, placeholders[key]);
@@ -103,8 +103,8 @@ class Lexicon {
     static get(key: string, mixed?: string | Placeholders): string {
         if (!this._translations) throw new Error('Translations is not defined.');
 
-        const lang = (typeof mixed === 'string') ? mixed : this.lang;
-        const placeholders = (typeof mixed === 'object') ? mixed : {};
+        const lang: string = (typeof mixed === 'string') ? mixed : this.lang;
+        const placeholders: Placeholders = (typeof mixed === 'object') ? mixed : {};
 
         if (key in this._translations && lang in this._translations[key]) {
             key = this.setPlaceholders(this._translations[key][lang], placeholders);
