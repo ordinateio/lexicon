@@ -18,7 +18,7 @@
     "build:demo": "webpack --config webpack.config.js",
     "build:demo:watch": "webpack --watch --config webpack.config.js",
     "build:dist": "tsc",
-    "build:all": "tsc && webpack --config webpack.config.js"
+    "build:all": "npm run build:dist && npm run build:demo"
   },
   "dependencies": {},
   "devDependencies": {
