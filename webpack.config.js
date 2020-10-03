@@ -4,10 +4,10 @@ module.exports = {
     performance: {
         hints: false
     },
-    entry: path.resolve(__dirname, 'test', 'src', 'index.ts'),
+    entry: path.resolve(__dirname, 'demo', 'src', 'index.ts'),
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'test', 'dist'),
+        path: path.resolve(__dirname, 'demo', 'bundle'),
     },
     devtool: 'source-map',
     mode: 'production',

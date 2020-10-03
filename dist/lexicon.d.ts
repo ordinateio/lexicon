@@ -18,4 +18,4 @@ declare class Lexicon {
     static get(key: string, placeholders: Placeholders): string;
 }
 export default Lexicon;
-export { Translations, Placeholders };
+export { Translations, Placeholders, };

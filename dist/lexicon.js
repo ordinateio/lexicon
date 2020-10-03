@@ -16,9 +16,8 @@ var Lexicon = (function () {
     }
     Object.defineProperty(Lexicon, "lang", {
         get: function () {
-            var _a, _b, _c;
-            (_a = this._lang) !== null && _a !== void 0 ? _a : (this._lang = (_c = (_b = document.querySelector('html')) === null || _b === void 0 ? void 0 : _b.getAttribute('lang')) !== null && _c !== void 0 ? _c : 'en');
-            return this._lang;
+            var _a;
+            return (_a = this._lang) !== null && _a !== void 0 ? _a : 'en';
         },
         set: function (lang) {
             this._lang = lang;
