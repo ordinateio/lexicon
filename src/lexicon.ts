@@ -34,7 +34,9 @@ class Lexicon {
      * Default language.
      */
     static get lang(): string {
-        return this._lang ?? 'en';
+        this._lang ??= 'en';
+
+        return this._lang;
     }
 
     /**
