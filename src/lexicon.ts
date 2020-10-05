@@ -1,6 +1,6 @@
 interface Translations {
     [key: string]: {
-        [lang: string]: string;
+        [locale: string]: string;
     };
 }
 
@@ -28,24 +28,24 @@ class Lexicon {
      *
      * @private
      */
-    private static _lang: string;
+    private static _locale: string;
 
     /**
      * Default language.
      */
-    static get lang(): string {
-        this._lang ??= 'en';
+    static get locale(): string {
+        this._locale ??= 'en';
 
-        return this._lang;
+        return this._locale;
     }
 
     /**
      * Default language.
      *
-     * @param lang Language abbreviation for example: en, ru, etc.
+     * @param locale Language abbreviation for example: en, ru, etc.
      */
-    static set lang(lang: string) {
-        this._lang = lang;
+    static set locale(locale: string) {
+        this._locale = locale;
     }
 
     /**
@@ -84,9 +84,9 @@ class Lexicon {
      * Returns a localized string.
      *
      * @param key Key to access translations.
-     * @param lang Required language.
+     * @param locale Required language.
      */
-    static get(key: string, lang: string): string;
+    static get(key: string, locale: string): string;
 
     /**
      * Returns a localized string.
@@ -105,11 +105,11 @@ class Lexicon {
     static get(key: string, mixed?: string | Placeholders): string {
         if (!this._translations) throw new Error('Translations is not defined.');
 
-        const lang: string = (typeof mixed === 'string') ? mixed : this.lang;
+        const locale: string = (typeof mixed === 'string') ? mixed : this.locale;
         const placeholders: Placeholders = (typeof mixed === 'object') ? mixed : {};
 
-        if (key in this._translations && lang in this._translations[key]) {
-            key = this.setPlaceholders(this._translations[key][lang], placeholders);
+        if (key in this._translations && locale in this._translations[key]) {
+            key = this.setPlaceholders(this._translations[key][locale], placeholders);
         }
 
         return key;

@@ -14,13 +14,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Lexicon = (function () {
     function Lexicon() {
     }
-    Object.defineProperty(Lexicon, "lang", {
+    Object.defineProperty(Lexicon, "locale", {
         get: function () {
             var _a;
-            return (_a = this._lang) !== null && _a !== void 0 ? _a : 'en';
+            (_a = this._locale) !== null && _a !== void 0 ? _a : (this._locale = 'en');
+            return this._locale;
         },
-        set: function (lang) {
-            this._lang = lang;
+        set: function (locale) {
+            this._locale = locale;
         },
         enumerable: false,
         configurable: true
@@ -39,10 +40,10 @@ var Lexicon = (function () {
     Lexicon.get = function (key, mixed) {
         if (!this._translations)
             throw new Error('Translations is not defined.');
-        var lang = (typeof mixed === 'string') ? mixed : this.lang;
+        var locale = (typeof mixed === 'string') ? mixed : this.locale;
         var placeholders = (typeof mixed === 'object') ? mixed : {};
-        if (key in this._translations && lang in this._translations[key]) {
-            key = this.setPlaceholders(this._translations[key][lang], placeholders);
+        if (key in this._translations && locale in this._translations[key]) {
+            key = this.setPlaceholders(this._translations[key][locale], placeholders);
         }
         return key;
     };

@@ -31,14 +31,14 @@ Lexicon.extend(translations);
 
 /* Used language: en */
 en.innerHTML = `
-<h1>Used language: ${Lexicon.lang}</h1>
+<h1>Used language: ${Lexicon.locale}</h1>
 <p>${Lexicon.get('lorem')}</p>`;
 
 
 /* Used language: ru */
-Lexicon.lang = 'ru';
+Lexicon.locale = 'ru';
 ru.innerHTML = `
-<h1>Used language: ${Lexicon.lang}</h1>
+<h1>Used language: ${Lexicon.locale}</h1>
 <p>${Lexicon.get('lorem')}</p>`;
 
 
