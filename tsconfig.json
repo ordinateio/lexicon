@@ -9,6 +9,6 @@
     "outDir": "dist/"
   },
   "files": [
-    "src/lexicon.ts"
+    "src/Lexicon.ts"
   ]
 }
