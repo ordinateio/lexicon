@@ -20,7 +20,7 @@ declare class Lexicon {
      *
      * @private
      */
-    private static _translations;
+    private static translations;
     /**
      * Used language.
      *

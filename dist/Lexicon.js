@@ -54,7 +54,7 @@ var Lexicon = /** @class */ (function () {
      * @param translations New translations.
      */
     Lexicon.extend = function (translations) {
-        this._translations = __assign(__assign({}, this._translations), translations);
+        this.translations = __assign(__assign({}, this.translations), translations);
     };
     /**
      * Sets placeholders to a string.
@@ -87,12 +87,12 @@ var Lexicon = /** @class */ (function () {
      * @param mixed Required language or object containing placeholders.
      */
     Lexicon.get = function (key, mixed) {
-        if (!this._translations)
+        if (!this.translations)
             throw new Error('Translations is not defined.');
         var locale = (typeof mixed === 'string') ? mixed : this.locale;
         var placeholders = (typeof mixed === 'object') ? mixed : {};
-        if (key in this._translations && locale in this._translations[key]) {
-            key = this.format(this._translations[key][locale], placeholders);
+        if (key in this.translations && locale in this.translations[key]) {
+            key = this.format(this.translations[key][locale], placeholders);
         }
         return key;
     };
