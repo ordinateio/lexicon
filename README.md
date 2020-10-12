@@ -26,5 +26,5 @@ Lexicon.extend({
     }
 });
 
-console.log(lexicon.get('key'));
+console.log(Lexicon.get('key'));
 ```
