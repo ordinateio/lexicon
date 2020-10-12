@@ -8,11 +8,13 @@ interface Placeholders {
     [key: string]: string;
 }
 
+type Wildcard = string | Placeholders;
+
 /**
  * Manages translations of the user interface.
  *
  * @see extend
- * @see setPlaceholders
+ * @see format
  * @see get
  */
 class Lexicon {
@@ -61,13 +63,19 @@ class Lexicon {
      * Sets placeholders to a string.
      *
      * @param string Source string.
-     * @param placeholders An object containing placeholders.
+     * @param wildcard An object containing placeholders or string.
      */
-    static setPlaceholders(string: string, placeholders: Placeholders): string {
-        const keys: string[] = Object.keys(placeholders);
+    static format(string: string, ...wildcard: Wildcard[]): string {
+        for (const item of [...wildcard]) {
+            if (typeof item === 'object') {
+                for (const [key, value] of Object.entries(item)) {
+                    string = string.replace(`{${key}}`, value);
+                }
 
-        for (const key of keys) {
-            string = string.replace(`{${key}}`, placeholders[key]);
+                continue;
+            }
+
+            string = string.replace('%s', item);
         }
 
         return string;
@@ -109,7 +117,7 @@ class Lexicon {
         const placeholders: Placeholders = (typeof mixed === 'object') ? mixed : {};
 
         if (key in this._translations && locale in this._translations[key]) {
-            key = this.setPlaceholders(this._translations[key][locale], placeholders);
+            key = this.format(this._translations[key][locale], placeholders);
         }
 
         return key;

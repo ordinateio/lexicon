@@ -10,12 +10,19 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+var __spreadArrays = (this && this.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Manages translations of the user interface.
  *
  * @see extend
- * @see setPlaceholders
+ * @see format
  * @see get
  */
 var Lexicon = /** @class */ (function () {
@@ -53,13 +60,23 @@ var Lexicon = /** @class */ (function () {
      * Sets placeholders to a string.
      *
      * @param string Source string.
-     * @param placeholders An object containing placeholders.
+     * @param wildcard An object containing placeholders or string.
      */
-    Lexicon.setPlaceholders = function (string, placeholders) {
-        var keys = Object.keys(placeholders);
-        for (var _i = 0, keys_1 = keys; _i < keys_1.length; _i++) {
-            var key = keys_1[_i];
-            string = string.replace("{" + key + "}", placeholders[key]);
+    Lexicon.format = function (string) {
+        var wildcard = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            wildcard[_i - 1] = arguments[_i];
+        }
+        for (var _a = 0, _b = __spreadArrays(wildcard); _a < _b.length; _a++) {
+            var item = _b[_a];
+            if (typeof item === 'object') {
+                for (var _c = 0, _d = Object.entries(item); _c < _d.length; _c++) {
+                    var _e = _d[_c], key = _e[0], value = _e[1];
+                    string = string.replace("{" + key + "}", value);
+                }
+                continue;
+            }
+            string = string.replace('%s', item);
         }
         return string;
     };
@@ -75,7 +92,7 @@ var Lexicon = /** @class */ (function () {
         var locale = (typeof mixed === 'string') ? mixed : this.locale;
         var placeholders = (typeof mixed === 'object') ? mixed : {};
         if (key in this._translations && locale in this._translations[key]) {
-            key = this.setPlaceholders(this._translations[key][locale], placeholders);
+            key = this.format(this._translations[key][locale], placeholders);
         }
         return key;
     };

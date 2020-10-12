@@ -55,11 +55,11 @@ get_ru.innerHTML = `
 
 
 /* Placeholders: en */
-placeholders_text = Lexicon.setPlaceholders(
-    'On the {other_hand} dislike...',
+placeholders_text = Lexicon.format(
+    'On the {other_hand} %s...',
     {
         'other_hand': 'other hand, we denounce with righteous indignation and',
-    });
+    }, 'dislike');
 placeholders_en.innerHTML = `
 <h1>Placeholders: en</h1>
 <p>${placeholders_text}</p>`;
@@ -69,7 +69,7 @@ placeholders_en.innerHTML = `
 let placeholders: Placeholders = {
     'do_not_forget': 'однако забывать, что постоянный количественный рост и сфера нашей',
 }
-placeholders_text = Lexicon.setPlaceholders('Не следует, {do_not_forget} активности...', placeholders);
+placeholders_text = Lexicon.format('Не следует, {do_not_forget} %s...', placeholders, 'активности');
 placeholders_ru.innerHTML = `
 <h1>Placeholders: ru</h1>
 <p>${placeholders_text}</p>`;

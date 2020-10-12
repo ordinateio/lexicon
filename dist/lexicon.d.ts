@@ -6,11 +6,12 @@ interface Translations {
 interface Placeholders {
     [key: string]: string;
 }
+declare type Wildcard = string | Placeholders;
 /**
  * Manages translations of the user interface.
  *
  * @see extend
- * @see setPlaceholders
+ * @see format
  * @see get
  */
 declare class Lexicon {
@@ -46,9 +47,9 @@ declare class Lexicon {
      * Sets placeholders to a string.
      *
      * @param string Source string.
-     * @param placeholders An object containing placeholders.
+     * @param wildcard An object containing placeholders or string.
      */
-    static setPlaceholders(string: string, placeholders: Placeholders): string;
+    static format(string: string, ...wildcard: Wildcard[]): string;
     /**
      * Returns a localized string.
      *
