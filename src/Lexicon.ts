@@ -63,10 +63,11 @@ class Lexicon {
      * Sets placeholders to a string.
      *
      * @param string Source string.
-     * @param wildcard An object containing placeholders or string.
+     * @param wildcard A string or object containing placeholders.
+     * @param wildcards Strings or objects containing placeholders.
      */
-    static format(string: string, ...wildcard: Wildcard[]): string {
-        for (const item of [...wildcard]) {
+    static format(string: string, wildcard: Wildcard, ...wildcards: Wildcard[]): string {
+        for (const item of [wildcard, ...wildcards]) {
             if (typeof item === 'object') {
                 for (const [key, value] of Object.entries(item)) {
                     string = string.replace(`{${key}}`, value);
