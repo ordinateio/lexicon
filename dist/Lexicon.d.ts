@@ -47,9 +47,10 @@ declare class Lexicon {
      * Sets placeholders to a string.
      *
      * @param string Source string.
-     * @param wildcard An object containing placeholders or string.
+     * @param wildcard A string or object containing placeholders.
+     * @param wildcards Strings or objects containing placeholders.
      */
-    static format(string: string, ...wildcard: Wildcard[]): string;
+    static format(string: string, wildcard: Wildcard, ...wildcards: Wildcard[]): string;
     /**
      * Returns a localized string.
      *
