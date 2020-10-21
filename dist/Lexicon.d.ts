@@ -1,5 +1,5 @@
 interface Translations {
-    [key: string]: {
+    [phrase: string]: {
         [locale: string]: string;
     };
 }
