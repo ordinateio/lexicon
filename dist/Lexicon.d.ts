@@ -44,33 +44,19 @@ declare class Lexicon {
      */
     static extend(translations: Translations): void;
     /**
-     * Sets placeholders to a string.
+     * Sets wildcard strings to the original string.
      *
-     * @param string Source string.
-     * @param wildcard A string or object containing placeholders.
-     * @param wildcards Strings or objects containing placeholders.
+     * @param string Original string.
+     * @param wildcards Wildcard strings or an object containing placeholders.
      */
-    static format(string: string, wildcard: Wildcard, ...wildcards: Wildcard[]): string;
+    static format(string: string, ...wildcards: Wildcard[]): string;
     /**
      * Returns a localized string.
      *
-     * @param key Key to access translations.
+     * @param phrase The key phrase to access translations.
+     * @param wildcards Wildcard strings or an object containing placeholders.
      */
-    static get(key: string): string;
-    /**
-     * Returns a localized string.
-     *
-     * @param key Key to access translations.
-     * @param locale Required language.
-     */
-    static get(key: string, locale: string): string;
-    /**
-     * Returns a localized string.
-     *
-     * @param key Key to access translations.
-     * @param placeholders An object containing placeholders.
-     */
-    static get(key: string, placeholders: Placeholders): string;
+    static get(phrase: string, ...wildcards: Wildcard[]): string;
 }
 export default Lexicon;
-export { Translations, Placeholders, };
+export { Translations, Placeholders, Wildcard, };

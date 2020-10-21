@@ -57,17 +57,17 @@ var Lexicon = /** @class */ (function () {
         this.translations = __assign(__assign({}, this.translations), translations);
     };
     /**
-     * Sets placeholders to a string.
+     * Sets wildcard strings to the original string.
      *
-     * @param string Source string.
-     * @param wildcard An object containing placeholders or string.
+     * @param string Original string.
+     * @param wildcards Wildcard strings or an object containing placeholders.
      */
     Lexicon.format = function (string) {
-        var wildcard = [];
+        var wildcards = [];
         for (var _i = 1; _i < arguments.length; _i++) {
-            wildcard[_i - 1] = arguments[_i];
+            wildcards[_i - 1] = arguments[_i];
         }
-        for (var _a = 0, _b = __spreadArrays(wildcard); _a < _b.length; _a++) {
+        for (var _a = 0, _b = __spreadArrays(wildcards); _a < _b.length; _a++) {
             var item = _b[_a];
             if (typeof item === 'object') {
                 for (var _c = 0, _d = Object.entries(item); _c < _d.length; _c++) {
@@ -83,18 +83,20 @@ var Lexicon = /** @class */ (function () {
     /**
      * Returns a localized string.
      *
-     * @param key Key to access translations.
-     * @param mixed Required language or object containing placeholders.
+     * @param phrase The key phrase to access translations.
+     * @param wildcards Wildcard strings or an object containing placeholders.
      */
-    Lexicon.get = function (key, mixed) {
+    Lexicon.get = function (phrase) {
+        var wildcards = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            wildcards[_i - 1] = arguments[_i];
+        }
         if (!this.translations)
             throw new Error('Translations is not defined.');
-        var locale = (typeof mixed === 'string') ? mixed : this.locale;
-        var placeholders = (typeof mixed === 'object') ? mixed : {};
-        if (key in this.translations && locale in this.translations[key]) {
-            key = this.format(this.translations[key][locale], placeholders);
+        if (phrase in this.translations && this.locale in this.translations[phrase]) {
+            phrase = this.format.apply(this, __spreadArrays([this.translations[phrase][this.locale]], wildcards));
         }
-        return key;
+        return phrase;
     };
     return Lexicon;
 }());

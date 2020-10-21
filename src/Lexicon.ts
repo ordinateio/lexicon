@@ -60,14 +60,13 @@ class Lexicon {
     }
 
     /**
-     * Sets placeholders to a string.
+     * Sets wildcard strings to the original string.
      *
-     * @param string Source string.
-     * @param wildcard A string or object containing placeholders.
-     * @param wildcards Strings or objects containing placeholders.
+     * @param string Original string.
+     * @param wildcards Wildcard strings or an object containing placeholders.
      */
-    static format(string: string, wildcard: Wildcard, ...wildcards: Wildcard[]): string {
-        for (const item of [wildcard, ...wildcards]) {
+    static format(string: string, ...wildcards: Wildcard[]): string {
+        for (const item of [...wildcards]) {
             if (typeof item === 'object') {
                 for (const [key, value] of Object.entries(item)) {
                     string = string.replace(`{${key}}`, value);
@@ -85,43 +84,17 @@ class Lexicon {
     /**
      * Returns a localized string.
      *
-     * @param key Key to access translations.
+     * @param phrase The key phrase to access translations.
+     * @param wildcards Wildcard strings or an object containing placeholders.
      */
-    static get(key: string): string;
-
-    /**
-     * Returns a localized string.
-     *
-     * @param key Key to access translations.
-     * @param locale Required language.
-     */
-    static get(key: string, locale: string): string;
-
-    /**
-     * Returns a localized string.
-     *
-     * @param key Key to access translations.
-     * @param placeholders An object containing placeholders.
-     */
-    static get(key: string, placeholders: Placeholders): string;
-
-    /**
-     * Returns a localized string.
-     *
-     * @param key Key to access translations.
-     * @param mixed Required language or object containing placeholders.
-     */
-    static get(key: string, mixed?: string | Placeholders): string {
+    static get(phrase: string, ...wildcards: Wildcard[]): string {
         if (!this.translations) throw new Error('Translations is not defined.');
 
-        const locale: string = (typeof mixed === 'string') ? mixed : this.locale;
-        const placeholders: Placeholders = (typeof mixed === 'object') ? mixed : {};
-
-        if (key in this.translations && locale in this.translations[key]) {
-            key = this.format(this.translations[key][locale], placeholders);
+        if (phrase in this.translations && this.locale in this.translations[phrase]) {
+            phrase = this.format(this.translations[phrase][this.locale], ...wildcards);
         }
 
-        return key;
+        return phrase;
     }
 }
 
@@ -129,4 +102,5 @@ export default Lexicon;
 export {
     Translations,
     Placeholders,
+    Wildcard,
 }
