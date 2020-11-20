@@ -7,7 +7,7 @@ module.exports = {
     entry: path.resolve(__dirname, 'demo', 'src', 'index.ts'),
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'demo', 'bundle'),
+        path: path.resolve(__dirname, 'demo', 'dist'),
     },
     devtool: 'source-map',
     mode: 'production',
@@ -18,7 +18,7 @@ module.exports = {
                 use: [{
                     loader: 'ts-loader',
                     options: {
-                        configFile: 'tsloader.json'
+                        configFile: 'tsconfig.loader.json'
                     }
                 }],
             },

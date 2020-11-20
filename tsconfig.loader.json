@@ -3,7 +3,7 @@
     "module": "CommonJS",
     "moduleResolution": "Node",
     "incremental": true,
-    "target": "ES5",
+    "target": "ES2019",
     "strict": true
   }
 }

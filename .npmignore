@@ -1,9 +1,10 @@
 .idea
+.cache
+
 src
 demo
 
-tsconfig.json
-tsloader.json
-webpack.config.js
-*.tsbuildinfo
+tsconfig.*
+webpack.config.*
+
 *.tgz
