@@ -23,7 +23,7 @@ class Lexicon {
      *
      * @private
      */
-    private static translations: Translations;
+    private static translations: Translations = {};
 
     /**
      * Used language.
@@ -56,7 +56,14 @@ class Lexicon {
      * @param translations New translations.
      */
     static extend(translations: Translations): void {
-        this.translations = {...this.translations, ...translations};
+        for (const phrase of Object.keys(translations)) {
+            if (this.translations[phrase]) {
+                this.translations[phrase] = {...this.translations[phrase], ...translations[phrase]};
+                continue;
+            }
+
+            this.translations[phrase] = {...translations[phrase]};
+        }
     }
 
     /**
