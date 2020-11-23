@@ -30,7 +30,13 @@ class Lexicon {
      * @param translations New translations.
      */
     static extend(translations) {
-        this.translations = { ...this.translations, ...translations };
+        for (const phrase of Object.keys(translations)) {
+            if (this.translations[phrase]) {
+                this.translations[phrase] = { ...this.translations[phrase], ...translations[phrase] };
+                continue;
+            }
+            this.translations[phrase] = { ...translations[phrase] };
+        }
     }
     /**
      * Sets wildcard strings to the original string.
@@ -65,4 +71,10 @@ class Lexicon {
         return phrase;
     }
 }
+/**
+ * Default translations.
+ *
+ * @private
+ */
+Lexicon.translations = {};
 exports.default = Lexicon;
