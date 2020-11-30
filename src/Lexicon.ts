@@ -23,7 +23,14 @@ class Lexicon {
      *
      * @private
      */
-    private static translations: Translations = {};
+    private static _translations: Translations = {};
+
+    /**
+     * Default translations.
+     */
+    static get translations(): Translations {
+        return this._translations;
+    }
 
     /**
      * Used language.
