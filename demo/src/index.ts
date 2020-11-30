@@ -10,13 +10,13 @@ const ru = document.querySelector('.content .ru');
 if (!ru) throw new Error('Element ".ru" is "undefined".');
 
 const placeholders_en = document.querySelector('.content .placeholders-en');
-if (!placeholders_en) throw new Error('Element ".placeholders_en" is "undefined".');
+if (!placeholders_en) throw new Error('Element ".placeholders-en" is "undefined".');
 
 const placeholders_de = document.querySelector('.content .placeholders-de');
-if (!placeholders_de) throw new Error('Element ".placeholders_de" is "undefined".');
+if (!placeholders_de) throw new Error('Element ".placeholders-de" is "undefined".');
 
 const placeholders_ru = document.querySelector('.content .placeholders-ru');
-if (!placeholders_ru) throw new Error('Element ".placeholders_ru" is "undefined".');
+if (!placeholders_ru) throw new Error('Element ".placeholders-ru" is "undefined".');
 
 let placeholders_text: string;
 
