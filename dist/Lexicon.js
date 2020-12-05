@@ -9,6 +9,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 class Lexicon {
     /**
+     * Default translations.
+     */
+    static get translations() {
+        return this._translations;
+    }
+    /**
      * Default language.
      */
     static get locale() {
@@ -76,5 +82,5 @@ class Lexicon {
  *
  * @private
  */
-Lexicon.translations = {};
+Lexicon._translations = {};
 exports.default = Lexicon;
