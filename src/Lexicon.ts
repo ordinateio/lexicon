@@ -1,14 +1,14 @@
-interface LexiconTranslations {
+interface Translations {
     [phrase: string]: {
         [locale: string]: string;
     };
 }
 
-interface LexiconPlaceholders {
+interface Placeholders {
     [key: string]: string;
 }
 
-type LexiconWildcard = LexiconPlaceholders | string;
+type Wildcard = Placeholders | string;
 
 /**
  * Manages translations of the user interface.
@@ -23,12 +23,12 @@ class Lexicon {
      *
      * @private
      */
-    private static _translations: LexiconTranslations = {};
+    private static _translations: Translations = {};
 
     /**
      * Default translations.
      */
-    static get translations(): LexiconTranslations {
+    static get translations(): Translations {
         return this._translations;
     }
 
@@ -62,7 +62,7 @@ class Lexicon {
      *
      * @param translations New translations.
      */
-    static extend(translations: LexiconTranslations): void {
+    static extend(translations: Translations): void {
         for (const phrase of Object.keys(translations)) {
             if (this.translations[phrase]) {
                 this.translations[phrase] = {...this.translations[phrase], ...translations[phrase]};
@@ -79,7 +79,7 @@ class Lexicon {
      * @param string Original string.
      * @param wildcards Wildcard strings or an object containing placeholders.
      */
-    static format(string: string, ...wildcards: LexiconWildcard[]): string {
+    static format(string: string, ...wildcards: Wildcard[]): string {
         for (const item of [...wildcards]) {
             if (typeof item === 'object') {
                 for (const [key, value] of Object.entries(item)) {
@@ -101,7 +101,7 @@ class Lexicon {
      * @param phrase The key phrase to access translations.
      * @param wildcards Wildcard strings or an object containing placeholders.
      */
-    static get(phrase: string, ...wildcards: LexiconWildcard[]): string {
+    static get(phrase: string, ...wildcards: Wildcard[]): string {
         if (!this.translations) throw new Error('Translations is not defined.');
 
         if (phrase in this.translations && this.locale in this.translations[phrase]) {
@@ -114,7 +114,5 @@ class Lexicon {
 
 export default Lexicon;
 export {
-    LexiconTranslations,
-    LexiconPlaceholders,
-    LexiconWildcard,
+    Translations,
 }
