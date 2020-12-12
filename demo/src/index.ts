@@ -1,4 +1,4 @@
-import Lexicon from "../../src/Lexicon";
+import Lexicon from '../../src/Lexicon';
 
 const en = document.querySelector('.content .en');
 if (!en) throw new Error('Element ".en" is "undefined".');

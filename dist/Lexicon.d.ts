@@ -1,12 +1,12 @@
-interface Translations {
+interface LexiconTranslations {
     [phrase: string]: {
         [locale: string]: string;
     };
 }
-interface Placeholders {
+interface LexiconPlaceholders {
     [key: string]: string;
 }
-declare type Wildcard = string | Placeholders;
+declare type LexiconWildcard = LexiconPlaceholders | string;
 /**
  * Manages translations of the user interface.
  *
@@ -24,7 +24,7 @@ declare class Lexicon {
     /**
      * Default translations.
      */
-    static get translations(): Translations;
+    static get translations(): LexiconTranslations;
     /**
      * Used language.
      *
@@ -46,21 +46,21 @@ declare class Lexicon {
      *
      * @param translations New translations.
      */
-    static extend(translations: Translations): void;
+    static extend(translations: LexiconTranslations): void;
     /**
      * Sets wildcard strings to the original string.
      *
      * @param string Original string.
      * @param wildcards Wildcard strings or an object containing placeholders.
      */
-    static format(string: string, ...wildcards: Wildcard[]): string;
+    static format(string: string, ...wildcards: LexiconWildcard[]): string;
     /**
      * Returns a localized string.
      *
      * @param phrase The key phrase to access translations.
      * @param wildcards Wildcard strings or an object containing placeholders.
      */
-    static get(phrase: string, ...wildcards: Wildcard[]): string;
+    static get(phrase: string, ...wildcards: LexiconWildcard[]): string;
 }
 export default Lexicon;
-export { Translations, Placeholders, Wildcard, };
+export { LexiconTranslations, LexiconPlaceholders, LexiconWildcard, };
