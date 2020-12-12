@@ -114,5 +114,5 @@ class Lexicon {
 
 export default Lexicon;
 export {
-    Translations,
+    Translations
 }
