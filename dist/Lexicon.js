@@ -38,10 +38,10 @@ class Lexicon {
     static extend(translations) {
         for (const phrase of Object.keys(translations)) {
             if (this.translations[phrase]) {
-                this.translations[phrase] = { ...this.translations[phrase], ...translations[phrase] };
+                this.translations[phrase] = Object.assign(Object.assign({}, this.translations[phrase]), translations[phrase]);
                 continue;
             }
-            this.translations[phrase] = { ...translations[phrase] };
+            this.translations[phrase] = Object.assign({}, translations[phrase]);
         }
     }
     /**
