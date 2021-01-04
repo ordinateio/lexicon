@@ -1,12 +1,12 @@
-interface Translations {
+export interface LexiconTranslations {
     [phrase: string]: {
         [locale: string]: string;
     };
 }
-interface Placeholders {
+export interface LexiconPlaceholders {
     [key: string]: string;
 }
-declare type Wildcard = Placeholders | string;
+export declare type LexiconWildcard = LexiconPlaceholders | string;
 /**
  * Manages translations of the user interface.
  *
@@ -14,7 +14,7 @@ declare type Wildcard = Placeholders | string;
  * @see format
  * @see get
  */
-declare class Lexicon {
+export declare class Lexicon {
     /**
      * Default translations.
      *
@@ -24,7 +24,7 @@ declare class Lexicon {
     /**
      * Default translations.
      */
-    static get translations(): Translations;
+    static get translations(): LexiconTranslations;
     /**
      * Used language.
      *
@@ -45,22 +45,22 @@ declare class Lexicon {
      * Extends the default translations with new phrases.
      *
      * @param translations New translations.
+     * @param callback
      */
-    static extend(translations: Translations): void;
+    static extend(translations: LexiconTranslations, callback?: () => void): void;
     /**
      * Sets wildcard strings to the original string.
      *
      * @param string Original string.
      * @param wildcards Wildcard strings or an object containing placeholders.
      */
-    static format(string: string, ...wildcards: Wildcard[]): string;
+    static format(string: string, ...wildcards: LexiconWildcard[]): string;
     /**
      * Returns a localized string.
      *
      * @param phrase The key phrase to access translations.
      * @param wildcards Wildcard strings or an object containing placeholders.
      */
-    static get(phrase: string, ...wildcards: Wildcard[]): string;
+    static get(phrase: string, ...wildcards: LexiconWildcard[]): string;
 }
 export default Lexicon;
-export { Translations };

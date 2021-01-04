@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Lexicon = void 0;
 /**
  * Manages translations of the user interface.
  *
@@ -34,15 +35,18 @@ class Lexicon {
      * Extends the default translations with new phrases.
      *
      * @param translations New translations.
+     * @param callback
      */
-    static extend(translations) {
-        for (const phrase of Object.keys(translations)) {
-            if (this.translations[phrase]) {
-                this.translations[phrase] = Object.assign(Object.assign({}, this.translations[phrase]), translations[phrase]);
+    static extend(translations, callback) {
+        for (const [key, value] of Object.entries(translations)) {
+            if (value) {
+                this.translations[key] = { ...this.translations[key], ...translations[key] };
                 continue;
             }
-            this.translations[phrase] = Object.assign({}, translations[phrase]);
+            this.translations[key] = { ...translations[key] };
         }
+        if (callback)
+            callback();
     }
     /**
      * Sets wildcard strings to the original string.
@@ -70,13 +74,14 @@ class Lexicon {
      */
     static get(phrase, ...wildcards) {
         if (!this.translations)
-            throw new Error('Translations is not defined.');
+            throw new Error('LexiconTranslations is not defined.');
         if (phrase in this.translations && this.locale in this.translations[phrase]) {
             phrase = this.format(this.translations[phrase][this.locale], ...wildcards);
         }
         return phrase;
     }
 }
+exports.Lexicon = Lexicon;
 /**
  * Default translations.
  *

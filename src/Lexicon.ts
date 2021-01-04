@@ -1,14 +1,14 @@
-interface Translations {
+export interface LexiconTranslations {
     [phrase: string]: {
         [locale: string]: string;
     };
 }
 
-interface Placeholders {
+export interface LexiconPlaceholders {
     [key: string]: string;
 }
 
-type Wildcard = Placeholders | string;
+export type LexiconWildcard = LexiconPlaceholders | string;
 
 /**
  * Manages translations of the user interface.
@@ -17,18 +17,18 @@ type Wildcard = Placeholders | string;
  * @see format
  * @see get
  */
-class Lexicon {
+export class Lexicon {
     /**
      * Default translations.
      *
      * @private
      */
-    private static _translations: Translations = {};
+    private static _translations: LexiconTranslations = {};
 
     /**
      * Default translations.
      */
-    static get translations(): Translations {
+    public static get translations(): LexiconTranslations {
         return this._translations;
     }
 
@@ -42,7 +42,7 @@ class Lexicon {
     /**
      * Default language.
      */
-    static get locale(): string {
+    public static get locale(): string {
         this._locale ??= 'en';
 
         return this._locale;
@@ -53,7 +53,7 @@ class Lexicon {
      *
      * @param locale Language abbreviation for example: en, ru, etc.
      */
-    static set locale(locale: string) {
+    public static set locale(locale: string) {
         this._locale = locale;
     }
 
@@ -61,16 +61,19 @@ class Lexicon {
      * Extends the default translations with new phrases.
      *
      * @param translations New translations.
+     * @param callback
      */
-    static extend(translations: Translations): void {
-        for (const phrase of Object.keys(translations)) {
-            if (this.translations[phrase]) {
-                this.translations[phrase] = {...this.translations[phrase], ...translations[phrase]};
+    public static extend(translations: LexiconTranslations, callback?: () => void): void {
+        for (const [key, value] of Object.entries(translations)) {
+            if (value) {
+                this.translations[key] = {...this.translations[key], ...translations[key]};
                 continue;
             }
 
-            this.translations[phrase] = {...translations[phrase]};
+            this.translations[key] = {...translations[key]};
         }
+
+        if (callback) callback();
     }
 
     /**
@@ -79,7 +82,7 @@ class Lexicon {
      * @param string Original string.
      * @param wildcards Wildcard strings or an object containing placeholders.
      */
-    static format(string: string, ...wildcards: Wildcard[]): string {
+    public static format(string: string, ...wildcards: LexiconWildcard[]): string {
         for (const item of [...wildcards]) {
             if (typeof item === 'object') {
                 for (const [key, value] of Object.entries(item)) {
@@ -101,8 +104,8 @@ class Lexicon {
      * @param phrase The key phrase to access translations.
      * @param wildcards Wildcard strings or an object containing placeholders.
      */
-    static get(phrase: string, ...wildcards: Wildcard[]): string {
-        if (!this.translations) throw new Error('Translations is not defined.');
+    public static get(phrase: string, ...wildcards: LexiconWildcard[]): string {
+        if (!this.translations) throw new Error('LexiconTranslations is not defined.');
 
         if (phrase in this.translations && this.locale in this.translations[phrase]) {
             phrase = this.format(this.translations[phrase][this.locale], ...wildcards);
@@ -113,6 +116,3 @@ class Lexicon {
 }
 
 export default Lexicon;
-export {
-    Translations
-}
