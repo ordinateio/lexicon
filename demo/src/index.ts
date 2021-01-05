@@ -1,27 +1,13 @@
 import Lexicon from '../../src/Lexicon';
 
-const en = document.querySelector('.content .en');
-if (!en) throw new Error('Element ".en" is "undefined".');
-
-const de = document.querySelector('.content .de');
-if (!de) throw new Error('Element ".de" is "undefined".');
-
-const ru = document.querySelector('.content .ru');
-if (!ru) throw new Error('Element ".ru" is "undefined".');
-
-const placeholders_en = document.querySelector('.content .placeholders-en');
-if (!placeholders_en) throw new Error('Element ".placeholders-en" is "undefined".');
-
-const placeholders_de = document.querySelector('.content .placeholders-de');
-if (!placeholders_de) throw new Error('Element ".placeholders-de" is "undefined".');
-
-const placeholders_ru = document.querySelector('.content .placeholders-ru');
-if (!placeholders_ru) throw new Error('Element ".placeholders-ru" is "undefined".');
-
+const en = document.querySelector('.content .en') as HTMLElement;
+const de = document.querySelector('.content .de') as HTMLElement;
+const ru = document.querySelector('.content .ru') as HTMLElement;
+const placeholders_en = document.querySelector('.content .placeholders-en') as HTMLElement;
+const placeholders_de = document.querySelector('.content .placeholders-de') as HTMLElement;
+const placeholders_ru = document.querySelector('.content .placeholders-ru') as HTMLElement;
+const missing_key = document.querySelector('.content .missing-key') as HTMLElement;
 let placeholders_text: string;
-
-const missing_key = document.querySelector('.content .missing-key');
-if (!missing_key) throw new Error('Element ".missing-key" is "undefined".');
 
 Lexicon.extend({
     lorem: {
