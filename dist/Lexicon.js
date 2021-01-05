@@ -35,9 +35,8 @@ class Lexicon {
      * Extends the default translations with new phrases.
      *
      * @param translations New translations.
-     * @param callback
      */
-    static extend(translations, callback) {
+    static extend(translations) {
         for (const [key, value] of Object.entries(translations)) {
             if (value) {
                 this.translations[key] = { ...this.translations[key], ...translations[key] };
@@ -45,8 +44,6 @@ class Lexicon {
             }
             this.translations[key] = { ...translations[key] };
         }
-        if (callback)
-            callback();
     }
     /**
      * Sets wildcard strings to the original string.

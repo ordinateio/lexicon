@@ -45,9 +45,8 @@ export declare class Lexicon {
      * Extends the default translations with new phrases.
      *
      * @param translations New translations.
-     * @param callback
      */
-    static extend(translations: LexiconTranslations, callback?: () => void): void;
+    static extend(translations: LexiconTranslations): void;
     /**
      * Sets wildcard strings to the original string.
      *

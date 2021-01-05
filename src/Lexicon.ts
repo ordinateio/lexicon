@@ -61,9 +61,8 @@ export class Lexicon {
      * Extends the default translations with new phrases.
      *
      * @param translations New translations.
-     * @param callback
      */
-    public static extend(translations: LexiconTranslations, callback?: () => void): void {
+    public static extend(translations: LexiconTranslations): void {
         for (const [key, value] of Object.entries(translations)) {
             if (value) {
                 this.translations[key] = {...this.translations[key], ...translations[key]};
@@ -72,8 +71,6 @@ export class Lexicon {
 
             this.translations[key] = {...translations[key]};
         }
-
-        if (callback) callback();
     }
 
     /**
