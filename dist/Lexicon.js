@@ -20,7 +20,7 @@ class Lexicon {
      */
     static get locale() {
         var _a;
-        (_a = this._locale) !== null && _a !== void 0 ? _a : (this._locale = 'en');
+        (_a = this._locale) !== null && _a !== void 0 ? _a : (this._locale = "en");
         return this._locale;
     }
     /**
@@ -53,13 +53,13 @@ class Lexicon {
      */
     static format(string, ...wildcards) {
         for (const item of [...wildcards]) {
-            if (typeof item === 'object') {
+            if (typeof item === "object") {
                 for (const [key, value] of Object.entries(item)) {
                     string = string.replace(`{${key}}`, value);
                 }
                 continue;
             }
-            string = string.replace('%s', item);
+            string = string.replace("%s", item);
         }
         return string;
     }
@@ -71,7 +71,7 @@ class Lexicon {
      */
     static get(phrase, ...wildcards) {
         if (!this.translations)
-            throw new Error('LexiconTranslations is not defined.');
+            throw new Error("LexiconTranslations is not defined.");
         if (phrase in this.translations && this.locale in this.translations[phrase]) {
             phrase = this.format(this.translations[phrase][this.locale], ...wildcards);
         }

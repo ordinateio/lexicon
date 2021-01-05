@@ -20,11 +20,11 @@ npm i https://github.com/callisto2410/modstrap-lexicon.git
 import Lexicon from "@modstrap/lexicon";
 
 Lexicon.extend({
-    'key': {
-         en: 'On the other hand ...',
-         ru: 'Не следует, однако...',
+    "key": {
+         en: "On the other hand ...",
+         ru: "Не следует, однако...",
     }
 });
 
-console.log(Lexicon.get('key'));
+console.log(Lexicon.get("key"));
 ```

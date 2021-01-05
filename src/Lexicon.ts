@@ -1,7 +1,7 @@
 export interface LexiconTranslations {
     [phrase: string]: {
         [locale: string]: string;
-    };
+    }
 }
 
 export interface LexiconPlaceholders {
@@ -43,7 +43,7 @@ export class Lexicon {
      * Default language.
      */
     public static get locale(): string {
-        this._locale ??= 'en';
+        this._locale ??= "en";
 
         return this._locale;
     }
@@ -81,7 +81,7 @@ export class Lexicon {
      */
     public static format(string: string, ...wildcards: LexiconWildcard[]): string {
         for (const item of [...wildcards]) {
-            if (typeof item === 'object') {
+            if (typeof item === "object") {
                 for (const [key, value] of Object.entries(item)) {
                     string = string.replace(`{${key}}`, value);
                 }
@@ -89,7 +89,7 @@ export class Lexicon {
                 continue;
             }
 
-            string = string.replace('%s', item);
+            string = string.replace("%s", item);
         }
 
         return string;
@@ -102,7 +102,7 @@ export class Lexicon {
      * @param wildcards Wildcard strings or an object containing placeholders.
      */
     public static get(phrase: string, ...wildcards: LexiconWildcard[]): string {
-        if (!this.translations) throw new Error('LexiconTranslations is not defined.');
+        if (!this.translations) throw new Error("LexiconTranslations is not defined.");
 
         if (phrase in this.translations && this.locale in this.translations[phrase]) {
             phrase = this.format(this.translations[phrase][this.locale], ...wildcards);
