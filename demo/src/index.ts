@@ -1,3 +1,5 @@
+import "./index.scss";
+
 import Lexicon from "../../src/Lexicon";
 
 const en = document.querySelector(".content .en") as HTMLElement;
