@@ -7,6 +7,9 @@ exports.Lexicon = void 0;
  * @see extend
  * @see format
  * @see get
+ *
+ * Lexicon:
+ * [Github]{@link https://github.com/callisto2410/modstrap-lexicon}
  */
 class Lexicon {
     /**
