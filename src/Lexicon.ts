@@ -16,6 +16,8 @@ export type LexiconWildcard = LexiconPlaceholders | string;
  * @see extend
  * @see format
  * @see get
+ *
+ * Github: {@link https://github.com/callisto2410/modstrap-lexicon}
  */
 export class Lexicon {
     /**
