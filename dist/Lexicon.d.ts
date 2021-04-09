@@ -6,7 +6,6 @@ export interface LexiconTranslations {
 export interface LexiconPlaceholders {
     [key: string]: string;
 }
-export declare type LexiconWildcard = LexiconPlaceholders | string;
 /**
  * Manages translations of the user interface.
  *
@@ -15,7 +14,7 @@ export declare type LexiconWildcard = LexiconPlaceholders | string;
  * @see get
  *
  * Lexicon:
- * [Github]{@link https://github.com/callisto2410/modstrap-lexicon}
+ * [Github]{@link https://github.com/ordinateio/lexicon}
  */
 export declare class Lexicon {
     /**
@@ -51,18 +50,17 @@ export declare class Lexicon {
      */
     static extend(translations: LexiconTranslations): void;
     /**
-     * Sets wildcard strings to the original string.
-     *
-     * @param string Original string.
-     * @param wildcards Wildcard strings or an object containing placeholders.
-     */
-    static format(string: string, ...wildcards: LexiconWildcard[]): string;
-    /**
      * Returns a localized string.
      *
      * @param phrase The key phrase to access translations.
-     * @param wildcards Wildcard strings or an object containing placeholders.
+     * @param placeholders Objects containing placeholders.
      */
-    static get(phrase: string, ...wildcards: LexiconWildcard[]): string;
+    static get(phrase: string, ...placeholders: LexiconPlaceholders[]): string;
+    /**
+     * Sets the specified placeholders to the original string.
+     *
+     * @param string Original string.
+     * @param placeholders Objects containing placeholders.
+     */
+    static format(string: string, ...placeholders: LexiconPlaceholders[]): string;
 }
-export default Lexicon;

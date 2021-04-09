@@ -1,23 +1,16 @@
-# modstrap-lexicon
+# Lexicon
 
 Manages translations of the user interface.
 
 ## Installation
-
-To install a specific version:
-```shell script
-npm i https://github.com/callisto2410/modstrap-lexicon.git#v1.0.0
-```
-
-To install the current version:
-```shell script
-npm i https://github.com/callisto2410/modstrap-lexicon.git
+```sh
+npm install --save-dev @ordinateio/lexicon
 ```
 
 ## Usage
 
 ```javascript
-import Lexicon from "@modstrap/lexicon";
+import {Lexicon} from "@ordinateio/lexicon";
 
 Lexicon.extend({
     "key": {

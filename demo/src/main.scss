@@ -23,29 +23,29 @@ article {
   padding: 30px;
   box-shadow: 0 0 10px rgba(0, 0, 0, .1);
 
+  &-item {
+    margin: 0 0 30px;
+
+    &:nth-last-child(1) {
+      margin: 0;
+    }
+
+    h1 {
+      font: 20px "Arial";
+      margin: 0 0 10px;
+    }
+
+    p {
+      font: 14px/22px "Arial";
+      margin: 0 0 30px;
+    }
+
+    p:nth-last-child(1) {
+      margin: 0;
+    }
+  }
+
   @media (max-width: 960px) {
     width: 100%;
   }
-}
-
-.item {
-  margin: 0 0 30px;
-}
-
-.item:nth-last-child(1) {
-  margin: 0;
-}
-
-h1 {
-  font: 20px "Arial";
-  margin: 0 0 10px;
-}
-
-p {
-  font: 14px/22px "Arial";
-  margin: 0 0 30px;
-}
-
-p:nth-last-child(1) {
-  margin: 0;
 }

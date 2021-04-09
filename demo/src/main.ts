@@ -1,14 +1,29 @@
-import "./index.scss";
+import "./main.scss";
 
-import Lexicon from "../../src/Lexicon";
+import {Lexicon} from "../../src/Lexicon";
 
-const en = document.querySelector(".content .en") as HTMLElement;
-const de = document.querySelector(".content .de") as HTMLElement;
-const ru = document.querySelector(".content .ru") as HTMLElement;
-const placeholders_en = document.querySelector(".content .placeholders-en") as HTMLElement;
-const placeholders_de = document.querySelector(".content .placeholders-de") as HTMLElement;
-const placeholders_ru = document.querySelector(".content .placeholders-ru") as HTMLElement;
-const missing_key = document.querySelector(".content .missing-key") as HTMLElement;
+const en = document.querySelector(".content-item--en") as HTMLElement | null;
+if (!en) throw new Error("Element '.content-item--en' is null.");
+
+const de = document.querySelector(".content-item--de") as HTMLElement | null;
+if (!de) throw new Error("Element '.content-item--de' is null.");
+
+const ru = document.querySelector(".content-item--ru") as HTMLElement | null;
+if (!ru) throw new Error("Element '.content-item--ru' is null.");
+
+
+const placeholders_en = document.querySelector(".content-item--placeholders-en") as HTMLElement | null;
+if (!placeholders_en) throw new Error("Element '.content-item--placeholders-en' is null.");
+
+const placeholders_de = document.querySelector(".content-item--placeholders-de") as HTMLElement | null;
+if (!placeholders_de) throw new Error("Element '.content-item--placeholders-de' is null.");
+
+const placeholders_ru = document.querySelector(".content-item--placeholders-ru") as HTMLElement | null;
+if (!placeholders_ru) throw new Error("Element '.content-item--placeholders-ru' is null.");
+
+const missing_key = document.querySelector(".content-item--missing-key") as HTMLElement | null;
+if (!missing_key) throw new Error("Element '.content-item--missing-key' is null.");
+
 let placeholders_text: string;
 
 Lexicon.extend({
@@ -47,11 +62,11 @@ ru.innerHTML = `
 
 /* Placeholders: en */
 placeholders_text = Lexicon.format(
-    "However, {should} %s ...",
+    "However, {pl_1} {pl_2} ...",
     {
-        "should": "we should not forget that the constant quantitative growth and scope of our activity contributes",
+        "pl_1": "we should not forget that the constant quantitative growth and scope of our activity contributes",
+        "pl_2": "to the preparation and implementation",
     },
-    "to the preparation and implementation"
 );
 
 placeholders_en.innerHTML = `
@@ -61,11 +76,11 @@ placeholders_en.innerHTML = `
 
 /* Placeholders: de */
 placeholders_text = Lexicon.format(
-    "Wir sollten {jedoch} %s ...",
+    "Wir sollten {pl_1} {pl_2} ...",
     {
-        "jedoch": "jedoch nicht vergessen, dass das konstante quantitative Wachstum und der Umfang",
+        "pl_1": "jedoch nicht vergessen, dass das konstante quantitative Wachstum und der Umfang",
+        "pl_2": "unserer Aktivitäten zur Vorbereitung und Umsetzung der Positionen beitragen",
     },
-    "unserer Aktivitäten zur Vorbereitung und Umsetzung der Positionen beitragen"
 );
 
 placeholders_de.innerHTML = `
@@ -75,11 +90,11 @@ placeholders_de.innerHTML = `
 
 /* Placeholders: ru */
 placeholders_text = Lexicon.format(
-    "Не следует, {do_not_forget} %s ...",
+    "Не следует, {pl_1} {pl_2} ...",
     {
-        "do_not_forget": "однако забывать, что постоянный количественный рост и сфера нашей активности",
+        "pl_1": "однако забывать, что постоянный количественный рост и сфера нашей активности",
+        "pl_2": "способствует подготовке и реализации позиций",
     },
-    "способствует подготовки и реализации позиций"
 );
 
 placeholders_ru.innerHTML = `
