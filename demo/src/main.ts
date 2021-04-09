@@ -11,7 +11,6 @@ if (!de) throw new Error("Element '.content-item--de' is null.");
 const ru = document.querySelector(".content-item--ru") as HTMLElement | null;
 if (!ru) throw new Error("Element '.content-item--ru' is null.");
 
-
 const placeholders_en = document.querySelector(".content-item--placeholders-en") as HTMLElement | null;
 if (!placeholders_en) throw new Error("Element '.content-item--placeholders-en' is null.");
 
