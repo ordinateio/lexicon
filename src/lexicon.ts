@@ -44,7 +44,7 @@ export class Lexicon {
      * Default language.
      */
     static get locale(): string {
-        this._locale ??= "en";
+        this._locale ??= 'en';
 
         return this._locale;
     }
@@ -81,7 +81,7 @@ export class Lexicon {
      * @param placeholders Objects containing placeholders.
      */
     static get(phrase: string, ...placeholders: LexiconPlaceholders[]): string {
-        if (!this.translations) throw new Error("'LexiconTranslations' is not defined.");
+        if (!this.translations) throw new Error('\'LexiconTranslations\' is not defined.');
 
         if (phrase in this.translations && this.locale in this.translations[phrase]) {
             phrase = this.format(this.translations[phrase][this.locale], ...placeholders);
@@ -99,7 +99,7 @@ export class Lexicon {
     static format(string: string, ...placeholders: LexiconPlaceholders[]): string {
         for (const item of [...placeholders]) {
             for (const [key, value] of Object.entries(item)) {
-                string = string.replace("{" + key + "}", value);
+                string = string.replace('{' + key + '}', value);
             }
         }
 
