@@ -1,6 +1,6 @@
 {
   "name": "@ordinateio/lexicon",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Manages translations of the user interface.",
   "main": "dist/lexicon.js",
   "types": "dist/lexicon.d.ts",
