@@ -8,6 +8,10 @@ export interface LexiconPlaceholders {
     [key: string]: string;
 }
 
+export interface LexiconProperties {
+    locale?: string;
+}
+
 /**
  * Manages translations of the user interface.
  *
@@ -24,12 +28,12 @@ export class Lexicon {
      *
      * @private
      */
-    private static _translations: LexiconTranslations = {};
+    private _translations: LexiconTranslations = {};
 
     /**
      * Default translations.
      */
-    static get translations(): LexiconTranslations {
+    get translations(): LexiconTranslations {
         return this._translations;
     }
 
@@ -38,14 +42,12 @@ export class Lexicon {
      *
      * @private
      */
-    private static _locale: string;
+    private _locale: string = 'en';
 
     /**
      * Default language.
      */
-    static get locale(): string {
-        this._locale ??= 'en';
-
+    get locale(): string {
         return this._locale;
     }
 
@@ -54,8 +56,17 @@ export class Lexicon {
      *
      * @param locale Language abbreviation for example: en, ru, etc.
      */
-    static set locale(locale: string) {
+    set locale(locale: string) {
         this._locale = locale;
+    }
+
+    /**
+     * Lexicon constructor.
+     *
+     * @param properties
+     */
+    constructor(properties: LexiconProperties = {}) {
+        properties.locale && (this._locale = properties.locale);
     }
 
     /**
@@ -63,7 +74,7 @@ export class Lexicon {
      *
      * @param translations New translations.
      */
-    static extend(translations: LexiconTranslations): void {
+    extend(translations: LexiconTranslations): void {
         for (const [key, value] of Object.entries(translations)) {
             if (!value) continue;
 
@@ -80,7 +91,7 @@ export class Lexicon {
      * @param phrase The key phrase to access translations.
      * @param placeholders Objects containing placeholders.
      */
-    static get(phrase: string, ...placeholders: LexiconPlaceholders[]): string {
+    get(phrase: string, ...placeholders: LexiconPlaceholders[]): string {
         if (!this.translations) throw new Error('"LexiconTranslations" is not defined.');
 
         if (phrase in this.translations && this.locale in this.translations[phrase]) {
@@ -96,7 +107,7 @@ export class Lexicon {
      * @param string Original string.
      * @param placeholders Objects containing placeholders.
      */
-    static format(string: string, ...placeholders: LexiconPlaceholders[]): string {
+    format(string: string, ...placeholders: LexiconPlaceholders[]): string {
         for (const item of [...placeholders]) {
             for (const [key, value] of Object.entries(item)) {
                 string = string.replace('{' + key + '}', value);
