@@ -1,6 +1,6 @@
-import './index.scss';
+import {Lexicon} from '../../src';
 
-import {Lexicon} from '../../src/Lexicon';
+import './index.scss';
 
 const en = document.querySelector('.content-item--en') as HTMLElement | null;
 if (!en) throw new Error('Element ".content-item--en" is null.');
