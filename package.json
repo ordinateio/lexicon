@@ -27,12 +27,13 @@
     "build:dev": "webpack --config demo/webpack.dev.js",
     "build:dev:watch": "webpack --watch --config demo/webpack.dev.js",
     "build:dev:serve": "live-server ./demo",
-    "build:dist": "npx tsc --project tsconfig.json",
-    "clean:all": "run-s clean:{cache,dist}",
+    "build:dist": "tsc --project tsconfig.json",
+    "clean:all": "run-s clean:{cache,dist,demo}",
     "clean:cache": "rimraf .cache",
-    "clean:dist": "rimraf dist demo/dist",
-    "npm:pack": "npm run clean:all && npm run build:dist && npm pack",
-    "npm:publish": "npm publish --access public",
+    "clean:dist": "rimraf dist",
+    "clean:demo": "rimraf demo/dist",
+    "npm:pack": "npm run clean:{dist} && npm run build:dist && npm pack",
+    "npm:publish": "npm run clean:{dist} && npm run build:dist && npm publish --access public",
     "npm:update:lock": "npm install --package-lock-only"
   },
   "devDependencies": {
