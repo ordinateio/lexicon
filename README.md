@@ -12,12 +12,13 @@ npm install --save-dev @ordinateio/lexicon
 ```javascript
 import {Lexicon} from "@ordinateio/lexicon";
 
-Lexicon.extend({
+const lexicon = new Lexicon();
+lexicon.extend({
     "key": {
          en: "On the other hand ...",
          ru: "Не следует, однако...",
     }
 });
 
-console.log(Lexicon.get("key"));
+console.log(lexicon.get("key"));
 ```
