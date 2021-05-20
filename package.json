@@ -1,6 +1,6 @@
 {
   "name": "@ordinateio/lexicon",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Manages translations of the user interface.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -32,8 +32,8 @@
     "clean:cache": "rimraf .cache",
     "clean:dist": "rimraf dist",
     "clean:demo": "rimraf demo/dist",
-    "npm:pack": "run-s clean:dist build:dist && npm pack",
-    "npm:publish": "run-s clean:dist build:dist && npm publish --access public",
+    "npm:pack": "run-s clean:{cache,dist} build:dist && npm pack",
+    "npm:publish": "run-s clean:{cache,dist} build:dist && npm publish --access public",
     "npm:update:lock": "npm install --package-lock-only"
   },
   "devDependencies": {
