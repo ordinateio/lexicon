@@ -2,26 +2,26 @@ import {Lexicon} from '../../src';
 
 import './index.scss';
 
-const en = document.querySelector('.content-item--en') as HTMLElement | null;
-if (!en) throw new Error('Element ".content-item--en" is null.');
+const en = document.querySelector('.content__item--en') as HTMLElement | null;
+if (!en) throw new Error('Element ".content__item--en" is null.');
 
-const de = document.querySelector('.content-item--de') as HTMLElement | null;
-if (!de) throw new Error('Element ".content-item--de" is null.');
+const de = document.querySelector('.content__item--de') as HTMLElement | null;
+if (!de) throw new Error('Element ".content__item--de" is null.');
 
-const ru = document.querySelector('.content-item--ru') as HTMLElement | null;
-if (!ru) throw new Error('Element ".content-item--ru" is null.');
+const ru = document.querySelector('.content__item--ru') as HTMLElement | null;
+if (!ru) throw new Error('Element ".content__item--ru" is null.');
 
-const placeholders_en = document.querySelector('.content-item--placeholders-en') as HTMLElement | null;
-if (!placeholders_en) throw new Error('Element ".content-item--placeholders-en" is null.');
+const placeholders_en = document.querySelector('.content__item--placeholders-en') as HTMLElement | null;
+if (!placeholders_en) throw new Error('Element ".content__item--placeholders-en" is null.');
 
-const placeholders_de = document.querySelector('.content-item--placeholders-de') as HTMLElement | null;
-if (!placeholders_de) throw new Error('Element ".content-item--placeholders-de" is null.');
+const placeholders_de = document.querySelector('.content__item--placeholders-de') as HTMLElement | null;
+if (!placeholders_de) throw new Error('Element ".content__item--placeholders-de" is null.');
 
-const placeholders_ru = document.querySelector('.content-item--placeholders-ru') as HTMLElement | null;
-if (!placeholders_ru) throw new Error('Element ".content-item--placeholders-ru" is null.');
+const placeholders_ru = document.querySelector('.content__item--placeholders-ru') as HTMLElement | null;
+if (!placeholders_ru) throw new Error('Element ".content__item--placeholders-ru" is null.');
 
-const missing_key = document.querySelector('.content-item--missing-key') as HTMLElement | null;
-if (!missing_key) throw new Error('Element ".content-item--missing-key" is null.');
+const missing_key = document.querySelector('.content__item--missing-key') as HTMLElement | null;
+if (!missing_key) throw new Error('Element ".content__item--missing-key" is null.');
 
 let placeholders_text: string;
 const lexicon = new Lexicon();
