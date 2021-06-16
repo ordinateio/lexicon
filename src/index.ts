@@ -38,7 +38,7 @@ export class Lexicon {
     }
 
     /**
-     * Used language.
+     * Default language.
      *
      * @private
      */
@@ -94,12 +94,12 @@ export class Lexicon {
     get(phrase: string, ...placeholders: LexiconPlaceholders[]): string {
         if (!this.translations) throw new Error('"LexiconTranslations" is not defined.');
 
-        let string = phrase;
+        let value = phrase;
         if (phrase in this.translations && this.locale in this.translations[phrase]) {
-            string = this.format(this.translations[phrase][this.locale], ...placeholders);
+            value = this.format(this.translations[phrase][this.locale], ...placeholders);
         }
 
-        return string;
+        return value;
     }
 
     /**
