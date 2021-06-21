@@ -15,10 +15,6 @@ export interface LexiconProperties {
 /**
  * Manages translations of the user interface.
  *
- * @see extend
- * @see format
- * @see get
- *
  * Lexicon:
  * [Github]{@link https://github.com/ordinateio/lexicon}
  */
