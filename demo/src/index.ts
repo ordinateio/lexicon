@@ -1,5 +1,4 @@
 import {Lexicon} from '../../src';
-
 import './index.scss';
 
 const en = document.querySelector('.content__item--en') as HTMLElement | null;
