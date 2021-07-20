@@ -1,3 +1,15 @@
+export interface LexiconProperties {
+    /**
+     * Language abbreviation for example: en, ru, etc.
+     */
+    locale: string;
+
+    /**
+     * Translations.
+     */
+    translations: LexiconTranslations;
+}
+
 export interface LexiconTranslations {
     [phrase: string]: {
         [locale: string]: string;
@@ -8,18 +20,6 @@ export interface LexiconPlaceholders {
     [key: string]: string;
 }
 
-export interface LexiconProperties {
-    /**
-     * Language abbreviation for example: en, ru, etc.
-     */
-    locale?: string;
-
-    /**
-     * Translations.
-     */
-    translations?: LexiconTranslations;
-}
-
 /**
  * Class Lexicon - Manages translations of the user interface.
  *
@@ -27,31 +27,20 @@ export interface LexiconProperties {
  */
 export class Lexicon {
     /**
-     * Translations.
+     * Properties for translations.
      *
      * @private
      */
-    private _translations: LexiconTranslations = {};
-
-    /**
-     * Translations.
-     */
-    public get translations(): LexiconTranslations {
-        return this._translations;
-    }
-
-    /**
-     * Language.
-     *
-     * @private
-     */
-    private _locale: string = 'en';
+    private readonly properties: LexiconProperties = {
+        locale: 'en',
+        translations: {},
+    };
 
     /**
      * Language.
      */
     public get locale(): string {
-        return this._locale;
+        return this.properties.locale;
     }
 
     /**
@@ -60,7 +49,23 @@ export class Lexicon {
      * @param locale Language abbreviation for example: en, ru, etc.
      */
     public set locale(locale: string) {
-        this._locale = locale;
+        this.properties.locale = locale;
+    }
+
+    /**
+     * Translations.
+     */
+    public get translations(): LexiconTranslations {
+        return this.properties.translations;
+    }
+
+    /**
+     * Translations.
+     *
+     * @param translations
+     */
+    public set translations(translations: LexiconTranslations) {
+        this.properties.translations = translations;
     }
 
     /**
@@ -68,9 +73,11 @@ export class Lexicon {
      *
      * @param properties
      */
-    public constructor(properties: LexiconProperties = {}) {
-        if (properties.locale) this._locale = properties.locale;
-        if (properties.translations) this.extend(properties.translations);
+    public constructor(properties: Partial<LexiconProperties> = {}) {
+        this.properties = {
+            ...this.properties,
+            ...properties,
+        };
     }
 
     /**

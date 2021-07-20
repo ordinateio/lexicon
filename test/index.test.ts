@@ -33,13 +33,12 @@ describe('Translations ...', () => {
         expect(value).toBe(true);
     });
 
-    lexicon.extend({
-        test: {
-            ru: ru,
-        }
-    });
-
     test('Translations for "ru" are available.', () => {
+        lexicon.translations = {
+            test: {
+                ru: ru,
+            }
+        };
         const value = 'ru' in lexicon.translations['test'];
 
         expect(value).toBe(true);
