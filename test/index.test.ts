@@ -16,32 +16,26 @@ describe('Translations ...', () => {
     });
 
     test('The language is set to "de".', () => {
-        const value = lexicon.locale;
-
-        expect(value).toBe('de');
+        expect(lexicon.locale).toBe('de');
     });
 
     test('Translations for "en" are available.', () => {
-        const value = 'en' in lexicon.translations['test'];
-
-        expect(value).toBe(true);
+        expect('en' in lexicon.translations['test']).toBe(true);
     });
 
     test('Translations for "de" are available.', () => {
-        const value = 'de' in lexicon.translations['test'];
-
-        expect(value).toBe(true);
+        expect('de' in lexicon.translations['test']).toBe(true);
     });
 
     test('Translations for "ru" are available.', () => {
         lexicon.translations = {
             test: {
+                ...lexicon.translations['test'],
                 ru: ru,
             }
         };
-        const value = 'ru' in lexicon.translations['test'];
 
-        expect(value).toBe(true);
+        expect('ru' in lexicon.translations['test']).toBe(true);
     });
 });
 
@@ -57,23 +51,20 @@ describe('Matching translations ...', () => {
 
     test('Language "en".', () => {
         lexicon.locale = 'en';
-        const value = lexicon.get('test');
 
-        expect(value).toContain(en);
+        expect(lexicon.get('test')).toContain(en);
     });
 
     test('Language "ru".', () => {
         lexicon.locale = 'ru';
-        const value = lexicon.get('test');
 
-        expect(value).toContain(ru);
+        expect(lexicon.get('test')).toContain(ru);
     });
 
     test('Language "de".', () => {
         lexicon.locale = 'de';
-        const value = lexicon.get('test');
 
-        expect(value).toContain(de);
+        expect(lexicon.get('test')).toContain(de);
     });
 });
 
