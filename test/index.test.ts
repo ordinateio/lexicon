@@ -4,7 +4,6 @@ const en = 'However, we should not forget that the constant quantitative growth 
 const ru = 'Не следует, однако забывать, что постоянный количественный рост и сфера ...';
 const de = 'Wir sollten jedoch nicht vergessen, dass das konstante quantitative Wachstum ...';
 
-
 describe('Translations ...', () => {
     const lexicon = new Lexicon({
         locale: 'de'
