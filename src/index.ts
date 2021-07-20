@@ -9,13 +9,15 @@ export interface LexiconPlaceholders {
 }
 
 export interface LexiconProperties {
+    /**
+     * Language abbreviation for example: en, ru, etc.
+     */
     locale?: string;
 }
 
 /**
- * Manages translations of the user interface.
+ * Class Lexicon - Manages translations of the user interface.
  *
- * Lexicon:
  * [Github]{@link https://github.com/ordinateio/lexicon}
  */
 export class Lexicon {
@@ -71,9 +73,7 @@ export class Lexicon {
      * @param translations New translations.
      */
     extend(translations: LexiconTranslations): void {
-        for (const [key, value] of Object.entries(translations)) {
-            if (!value) continue;
-
+        for (const key of Object.keys(translations)) {
             this.translations[key] = {
                 ...this.translations[key],
                 ...translations[key]
@@ -88,9 +88,8 @@ export class Lexicon {
      * @param placeholders Objects containing placeholders.
      */
     get(phrase: string, ...placeholders: LexiconPlaceholders[]): string {
-        if (!this.translations) throw new Error('"LexiconTranslations" is not defined.');
-
         let value = phrase;
+
         if (phrase in this.translations && this.locale in this.translations[phrase]) {
             value = this.format(this.translations[phrase][this.locale], ...placeholders);
         }
