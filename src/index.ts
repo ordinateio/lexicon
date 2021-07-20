@@ -31,7 +31,7 @@ export class Lexicon {
     /**
      * Default translations.
      */
-    get translations(): LexiconTranslations {
+    public get translations(): LexiconTranslations {
         return this._translations;
     }
 
@@ -45,7 +45,7 @@ export class Lexicon {
     /**
      * Default language.
      */
-    get locale(): string {
+    public get locale(): string {
         return this._locale;
     }
 
@@ -54,7 +54,7 @@ export class Lexicon {
      *
      * @param locale Language abbreviation for example: en, ru, etc.
      */
-    set locale(locale: string) {
+    public set locale(locale: string) {
         this._locale = locale;
     }
 
@@ -63,7 +63,7 @@ export class Lexicon {
      *
      * @param properties
      */
-    constructor(properties: LexiconProperties = {}) {
+    public constructor(properties: LexiconProperties = {}) {
         properties.locale && (this._locale = properties.locale);
     }
 
@@ -72,7 +72,7 @@ export class Lexicon {
      *
      * @param translations New translations.
      */
-    extend(translations: LexiconTranslations): void {
+    public extend(translations: LexiconTranslations): void {
         for (const key of Object.keys(translations)) {
             this.translations[key] = {
                 ...this.translations[key],
@@ -87,7 +87,7 @@ export class Lexicon {
      * @param phrase The key phrase to access translations.
      * @param placeholders Objects containing placeholders.
      */
-    get(phrase: string, ...placeholders: LexiconPlaceholders[]): string {
+    public get(phrase: string, ...placeholders: LexiconPlaceholders[]): string {
         let value = phrase;
 
         if (phrase in this.translations && this.locale in this.translations[phrase]) {
@@ -103,7 +103,7 @@ export class Lexicon {
      * @param string Original string.
      * @param placeholders Objects containing placeholders.
      */
-    format(string: string, ...placeholders: LexiconPlaceholders[]): string {
+    public format(string: string, ...placeholders: LexiconPlaceholders[]): string {
         for (const item of [...placeholders]) {
             for (const [key, value] of Object.entries(item)) {
                 string = string.replace('{' + key + '}', value);
