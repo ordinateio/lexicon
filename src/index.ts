@@ -13,6 +13,11 @@ export interface LexiconProperties {
      * Language abbreviation for example: en, ru, etc.
      */
     locale?: string;
+
+    /**
+     * Translations.
+     */
+    translations?: LexiconTranslations;
 }
 
 /**
@@ -22,35 +27,35 @@ export interface LexiconProperties {
  */
 export class Lexicon {
     /**
-     * Default translations.
+     * Translations.
      *
      * @private
      */
     private _translations: LexiconTranslations = {};
 
     /**
-     * Default translations.
+     * Translations.
      */
     public get translations(): LexiconTranslations {
         return this._translations;
     }
 
     /**
-     * Default language.
+     * Language.
      *
      * @private
      */
     private _locale: string = 'en';
 
     /**
-     * Default language.
+     * Language.
      */
     public get locale(): string {
         return this._locale;
     }
 
     /**
-     * Default language.
+     * Language.
      *
      * @param locale Language abbreviation for example: en, ru, etc.
      */
@@ -64,7 +69,8 @@ export class Lexicon {
      * @param properties
      */
     public constructor(properties: LexiconProperties = {}) {
-        properties.locale && (this._locale = properties.locale);
+        if (properties.locale) this._locale = properties.locale;
+        if (properties.translations) this.extend(properties.translations);
     }
 
     /**
