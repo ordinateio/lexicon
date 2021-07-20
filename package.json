@@ -23,35 +23,23 @@
     "typescript"
   ],
   "scripts": {
-    "build:all": "run-s clean:all build:{dist,dev}",
-    "build:dev": "webpack --config demo/webpack.dev.js",
-    "build:dev:watch": "webpack --watch --config demo/webpack.dev.js",
-    "build:dev:serve": "live-server ./demo",
-    "build:dist": "tsc --project tsconfig.json",
-    "clean:all": "run-s clean:{cache,dist,demo}",
-    "clean:cache": "rimraf .cache",
-    "clean:dist": "rimraf dist",
-    "clean:demo": "rimraf demo/dist",
-    "npm:pack": "run-s clean:{cache,dist} build:dist && npm pack",
-    "npm:publish": "run-s clean:{cache,dist} build:dist && npm publish --access public",
-    "npm:update-lock-file": "npm install --package-lock-only"
+    "build": "tsc --project tsconfig.json",
+    "test": "jest",
+    "clean": "rimraf .cache dist *.tgz"
+  },
+  "jest": {
+    "cacheDirectory": ".cache/jest",
+    "coverageDirectory": ".cache/jest/coverage",
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    }
   },
   "devDependencies": {
+    "@types/jest": "^26",
     "@types/node": "^16",
-    "autoprefixer": "^10",
-    "css-loader": "^6",
-    "cssnano": "^5",
-    "live-server": "^1",
-    "npm-run-all": "^4",
-    "postcss-loader": "^6",
+    "jest": "^27",
     "rimraf": "^3",
-    "sass": "^1",
-    "sass-loader": "^12",
-    "style-loader": "^3",
-    "ts-loader": "^9",
-    "typescript": "^4",
-    "webpack": "^5",
-    "webpack-cli": "^4",
-    "webpack-merge": "^5"
+    "ts-jest": "^27",
+    "typescript": "^4"
   }
 }
