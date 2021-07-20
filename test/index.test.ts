@@ -6,7 +6,13 @@ const de = 'Wir sollten jedoch nicht vergessen, dass das konstante quantitative 
 
 describe('Translations ...', () => {
     const lexicon = new Lexicon({
-        locale: 'de'
+        locale: 'de',
+        translations: {
+            test: {
+                en: en,
+                de: de,
+            }
+        }
     });
 
     test('The language is set to "de".', () => {
@@ -15,14 +21,14 @@ describe('Translations ...', () => {
         expect(value).toBe('de');
     });
 
-    lexicon.extend({
-        test: {
-            en: en,
-        }
+    test('Translations for "en" are available.', () => {
+        const value = 'en' in lexicon.translations['test'];
+
+        expect(value).toBe(true);
     });
 
-    test('Adding the language "en".', () => {
-        const value = 'en' in lexicon.translations['test'];
+    test('Translations for "de" are available.', () => {
+        const value = 'de' in lexicon.translations['test'];
 
         expect(value).toBe(true);
     });
@@ -33,20 +39,8 @@ describe('Translations ...', () => {
         }
     });
 
-    test('Adding the language "ru".', () => {
+    test('Translations for "ru" are available.', () => {
         const value = 'ru' in lexicon.translations['test'];
-
-        expect(value).toBe(true);
-    });
-
-    lexicon.extend({
-        test: {
-            de: de,
-        }
-    });
-
-    test('Adding the language "de".', () => {
-        const value = 'de' in lexicon.translations['test'];
 
         expect(value).toBe(true);
     });
