@@ -3,6 +3,7 @@
 Manages translations of the user interface.
 
 ## Installation
+
 ```sh
 npm install --save-dev @ordinateio/lexicon
 ```

@@ -89,7 +89,7 @@ export class Lexicon {
         for (const key of Object.keys(translations)) {
             this.translations[key] = {
                 ...this.translations[key],
-                ...translations[key]
+                ...translations[key],
             };
         }
     }
