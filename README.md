@@ -13,7 +13,7 @@ npm install --save-dev @ordinateio/lexicon
 import {Lexicon} from "@ordinateio/lexicon";
 
 const lexicon = new Lexicon({
-    locale: 'en',
+    locale: 'ru',
     translations: {
         test: {
             en: "On the other hand ...",
@@ -22,5 +22,5 @@ const lexicon = new Lexicon({
     }
 });
 
-console.log(lexicon.get("key"));
+console.log(lexicon.get("test"));
 ```
