@@ -13,18 +13,13 @@ export interface LexiconProperties {
 export interface LexiconTranslations {
     [phrase: string]: {
         [locale: string]: string;
-    }
+    };
 }
 
 export interface LexiconPlaceholders {
     [key: string]: string;
 }
 
-/**
- * Class Lexicon - Manages translations of the user interface.
- *
- * [Github]{@link https://github.com/ordinateio/lexicon}
- */
 export class Lexicon {
     /**
      * Properties for translations.
@@ -39,7 +34,7 @@ export class Lexicon {
     /**
      * Language.
      */
-    public get locale(): string {
+    get locale(): string {
         return this.properties.locale;
     }
 
@@ -48,14 +43,14 @@ export class Lexicon {
      *
      * @param locale Language abbreviation for example: en, ru, etc.
      */
-    public set locale(locale: string) {
+    set locale(locale: string) {
         this.properties.locale = locale;
     }
 
     /**
      * Translations.
      */
-    public get translations(): LexiconTranslations {
+    get translations(): LexiconTranslations {
         return this.properties.translations;
     }
 
@@ -64,7 +59,7 @@ export class Lexicon {
      *
      * @param translations
      */
-    public set translations(translations: LexiconTranslations) {
+    set translations(translations: LexiconTranslations) {
         this.properties.translations = translations;
     }
 
@@ -73,7 +68,7 @@ export class Lexicon {
      *
      * @param properties
      */
-    public constructor(properties: Partial<LexiconProperties> = {}) {
+    constructor(properties: Partial<LexiconProperties> = {}) {
         this.properties = {
             ...this.properties,
             ...properties,
@@ -85,7 +80,7 @@ export class Lexicon {
      *
      * @param translations New translations.
      */
-    public extend(translations: LexiconTranslations): void {
+    extend(translations: LexiconTranslations): void {
         for (const key of Object.keys(translations)) {
             this.translations[key] = {
                 ...this.translations[key],
@@ -100,7 +95,7 @@ export class Lexicon {
      * @param phrase The key phrase to access translations.
      * @param placeholders Objects containing placeholders.
      */
-    public get(phrase: string, ...placeholders: LexiconPlaceholders[]): string {
+    get(phrase: string, ...placeholders: LexiconPlaceholders[]): string {
         let value = phrase;
 
         if (phrase in this.translations && this.locale in this.translations[phrase]) {
@@ -116,7 +111,7 @@ export class Lexicon {
      * @param string Original string.
      * @param placeholders Objects containing placeholders.
      */
-    public format(string: string, ...placeholders: LexiconPlaceholders[]): string {
+    format(string: string, ...placeholders: LexiconPlaceholders[]): string {
         for (const item of [...placeholders]) {
             for (const [key, value] of Object.entries(item)) {
                 string = string.replace('{' + key + '}', value);
