@@ -81,7 +81,7 @@ export class Lexicon {
      * @param translations New translations.
      */
     extend(translations: LexiconTranslations): void {
-        for (const key of Object.keys(translations)) {
+        for (let key of Object.keys(translations)) {
             this.translations[key] = {
                 ...this.translations[key],
                 ...translations[key],
@@ -112,8 +112,8 @@ export class Lexicon {
      * @param placeholders Objects containing placeholders.
      */
     format(string: string, ...placeholders: LexiconPlaceholders[]): string {
-        for (const item of [...placeholders]) {
-            for (const [key, value] of Object.entries(item)) {
+        for (let item of [...placeholders]) {
+            for (let [key, value] of Object.entries(item)) {
                 string = string.replace('{' + key + '}', value);
             }
         }

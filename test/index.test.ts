@@ -1,11 +1,11 @@
 import {Lexicon} from '../src';
 
-const en = 'However, we should not forget that the constant quantitative growth and ...';
-const ru = 'Не следует, однако забывать, что постоянный количественный рост и сфера ...';
-const de = 'Wir sollten jedoch nicht vergessen, dass das konstante quantitative Wachstum ...';
+let en = 'However, we should not forget that the constant quantitative growth and ...';
+let ru = 'Не следует, однако забывать, что постоянный количественный рост и сфера ...';
+let de = 'Wir sollten jedoch nicht vergessen, dass das konstante quantitative Wachstum ...';
 
 describe('Translations ...', () => {
-    const lexicon = new Lexicon({
+    let lexicon = new Lexicon({
         locale: 'de',
         translations: {
             test: {
@@ -40,7 +40,7 @@ describe('Translations ...', () => {
 });
 
 describe('Matching translations ...', () => {
-    const lexicon = new Lexicon();
+    let lexicon = new Lexicon();
     lexicon.extend({
         test: {
             en: en,
@@ -69,7 +69,7 @@ describe('Matching translations ...', () => {
 });
 
 describe('Formatting ...', () => {
-    const lexicon = new Lexicon();
+    let lexicon = new Lexicon();
     lexicon.extend({
         test: {
             en: en,
@@ -79,7 +79,7 @@ describe('Formatting ...', () => {
     });
 
     test('Language "en".', () => {
-        const value = lexicon.format(
+        let value = lexicon.format(
             'However, {p1} {p2} ...',
             {
                 'p1': 'we should not forget that the constant',
@@ -91,7 +91,7 @@ describe('Formatting ...', () => {
     });
 
     test('Language "ru".', () => {
-        const value = lexicon.format(
+        let value = lexicon.format(
             'Не следует, {p1} {p2} ...',
             {
                 'p1': 'однако забывать, что постоянный',
@@ -103,7 +103,7 @@ describe('Formatting ...', () => {
     });
 
     test('Language "de".', () => {
-        const value = lexicon.format(
+        let value = lexicon.format(
             'Wir sollten {p1} {p2} ...',
             {
                 'p1': 'jedoch nicht vergessen, dass das',
@@ -116,7 +116,7 @@ describe('Formatting ...', () => {
 });
 
 describe('Rest ...', () => {
-    const lexicon = new Lexicon();
+    let lexicon = new Lexicon();
     lexicon.extend({
         test: {
             en: en,
